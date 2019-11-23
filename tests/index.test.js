@@ -64,6 +64,47 @@ describe('aurelia-hovm', () => {
     expect(baseAttached).toHaveBeenCalledWith(arg);
   });
 
+  it('should enhance a view model that was already enhanced', () => {
+    // Given
+    const callQueue = [];
+    const baseId = 'base-vm';
+    const baseAttached = jest.fn();
+    class Base {
+      attached(...args) {
+        callQueue.push(baseId);
+        return baseAttached(...args);
+      }
+    }
+    const enhOneId = 'enh-one-vm';
+    const enhOneAttached = jest.fn();
+    class EnhanceOne {
+      attached(...args) {
+        callQueue.push(enhOneId);
+        return enhOneAttached(...args);
+      }
+    }
+    const enhTwoId = 'enh-one-vm';
+    const enhTwoAttached = jest.fn();
+    class EnhanceTwo {
+      attached(...args) {
+        callQueue.push(enhTwoId);
+        return enhTwoAttached(...args);
+      }
+    }
+    const arg = 'hello world!';
+    let sut = null;
+    // When
+    sut = new (compose(EnhanceTwo)(compose(EnhanceOne)(Base)))();
+    sut.attached(arg);
+    // Then
+    expect(sut).toBeInstanceOf(Base);
+    expect(callQueue).toEqual([
+      enhTwoId,
+      enhOneId,
+      baseId,
+    ]);
+  });
+
   it('should enhance a view model and call the methods from the hovms (promise)', () => {
     // Given
     const callQueue = [];
