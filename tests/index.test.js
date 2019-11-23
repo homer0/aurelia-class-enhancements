@@ -1,7 +1,7 @@
 jest.unmock('/src/index');
 
 require('jasmine-expect');
-const { compose, composeViewModel } = require('/src/index');
+const enhance = require('/src/index');
 
 describe('aurelia-hovm', () => {
   const delayExec = (fn) => new Promise((resolve) => {
@@ -9,12 +9,6 @@ describe('aurelia-hovm', () => {
       fn();
       resolve();
     }, 1);
-  });
-
-  it('should have public functions', () => {
-    // Given/When/Then
-    expect(compose).toBeFunction();
-    expect(composeViewModel).toBeFunction();
   });
 
   it('should enhance a view model and call the methods from the hovms', () => {
@@ -30,7 +24,7 @@ describe('aurelia-hovm', () => {
     }
     const enhOneId = 'enh-one-vm';
     const enhOneAttached = jest.fn();
-    class EnhanceOne {
+    class EnhancementOne {
       attached(...args) {
         callQueue.push(enhOneId);
         return enhOneAttached(...args);
@@ -38,7 +32,7 @@ describe('aurelia-hovm', () => {
     }
     const enhTwoId = 'enh-two-vm';
     const enhTwoAttached = jest.fn();
-    class EnhanceTwo {
+    class EnhancementTwo {
       attached(...args) {
         callQueue.push(enhTwoId);
         return enhTwoAttached(...args);
@@ -47,7 +41,7 @@ describe('aurelia-hovm', () => {
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (compose(EnhanceOne, EnhanceTwo)(Base))();
+    sut = new (enhance(EnhancementOne, EnhancementTwo)(Base))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -77,7 +71,7 @@ describe('aurelia-hovm', () => {
     }
     const enhOneId = 'enh-one-vm';
     const enhOneAttached = jest.fn();
-    class EnhanceOne {
+    class EnhancementOne {
       attached(...args) {
         callQueue.push(enhOneId);
         return enhOneAttached(...args);
@@ -85,7 +79,7 @@ describe('aurelia-hovm', () => {
     }
     const enhTwoId = 'enh-one-vm';
     const enhTwoAttached = jest.fn();
-    class EnhanceTwo {
+    class EnhancementTwo {
       attached(...args) {
         callQueue.push(enhTwoId);
         return enhTwoAttached(...args);
@@ -94,7 +88,7 @@ describe('aurelia-hovm', () => {
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (compose(EnhanceTwo)(compose(EnhanceOne)(Base)))();
+    sut = new (enhance(EnhancementTwo)(enhance(EnhancementOne)(Base)))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -120,7 +114,7 @@ describe('aurelia-hovm', () => {
     }
     const enhOneId = 'enh-one-vm';
     const enhOneAttached = jest.fn();
-    class EnhanceOne {
+    class EnhancementOne {
       attached(...args) {
         return delayExec(() => {
           callQueue.push(enhOneId);
@@ -130,7 +124,7 @@ describe('aurelia-hovm', () => {
     }
     const enhTwoId = 'enh-two-vm';
     const enhTwoAttached = jest.fn();
-    class EnhanceTwo {
+    class EnhancementTwo {
       attached(...args) {
         return delayExec(() => {
           callQueue.push(enhTwoId);
@@ -141,7 +135,7 @@ describe('aurelia-hovm', () => {
     const arg = [];
     let sut = null;
     // When
-    sut = new (compose(EnhanceOne, EnhanceTwo)(Base))();
+    sut = new (enhance(EnhancementOne, EnhancementTwo)(Base))();
     return sut.attached(arg)
     .then(() => {
       // Then
@@ -182,12 +176,12 @@ describe('aurelia-hovm', () => {
       services.depSix,
     ];
     const enhanceConstructor = jest.fn();
-    class Enhance {
+    class Enhancement {
       constructor(...args) {
         enhanceConstructor(...args);
       }
     }
-    Enhance.inject = [
+    Enhancement.inject = [
       services.depOne,
       services.depTwo,
       services.depFour,
@@ -197,7 +191,7 @@ describe('aurelia-hovm', () => {
     let dependencies = null;
     let sut = null;
     // When
-    Sut = composeViewModel(Base, Enhance);
+    Sut = enhance(Enhancement)(Base);
     dependencies = Sut.inject;
     sut = new Sut(...dependencies);
     // Then
@@ -231,7 +225,7 @@ describe('aurelia-hovm', () => {
     // Given
     class Base {}
     const enhanceAttached = jest.fn();
-    class Enhance {
+    class Enhancement {
       attached(...args) {
         return enhanceAttached(...args);
       }
@@ -239,7 +233,7 @@ describe('aurelia-hovm', () => {
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (composeViewModel(Base, Enhance))();
+    sut = new (enhance(Enhancement)(Base))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -255,11 +249,11 @@ describe('aurelia-hovm', () => {
         return baseAttached(...args);
       }
     }
-    class Enhance {}
+    class Enhancement {}
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (composeViewModel(Base, Enhance))();
+    sut = new (enhance(Enhancement)(Base))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -271,7 +265,7 @@ describe('aurelia-hovm', () => {
     // Given
     class Base {}
     const enhanceToString = jest.fn();
-    class Enhance {
+    class Enhancement {
       toString(...args) {
         return enhanceToString(...args);
       }
@@ -279,7 +273,7 @@ describe('aurelia-hovm', () => {
     let sut = null;
     let result = null;
     // When
-    sut = new (composeViewModel(Base, Enhance))();
+    sut = new (enhance(Enhancement)(Base))();
     result = sut.toString();
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -292,16 +286,16 @@ describe('aurelia-hovm', () => {
     class Base {}
     Base.staticProp = 'base';
     const enhanceToString = jest.fn();
-    class Enhance {
+    class Enhancement {
       toString(...args) {
         return enhanceToString(...args);
       }
     }
-    Enhance.staticProp = 'enhance';
+    Enhancement.staticProp = 'enhance';
     let Sut = null;
     let result = null;
     // When
-    Sut = composeViewModel(Base, Enhance);
+    Sut = enhance(Enhancement)(Base);
     result = Sut.staticProp;
     // Then
     expect(result).toBe(Base.staticProp);

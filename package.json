@@ -1,6 +1,6 @@
 {
   "name": "aurelia-hovm",
-  "description": "Use high order functionality on your Aurelia's view models",
+  "description": "Enhance your Aurelia's view models with high order functionality",
   "homepage": "https://homer0.github.io/aurelia-hovm/",
   "version": "0.0.1",
   "repository": "homer0/aurelia-hovm",

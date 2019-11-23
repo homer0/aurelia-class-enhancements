@@ -3,9 +3,9 @@
  */
 
 /**
- * @typdef {function} DecoratorCallback
+ * @typedef {function} EnhancementCreator
  * @param {Class} Target The ViewModel to enhance.
- * @return {Class} A proxied version of the `Target`.
+ * @return {Proxy<Class>} A proxied version of the `Target`.
  */
 
 /**
@@ -136,7 +136,7 @@ const enhanceInstance = (target, enhancement) => new Proxy(target, {
  * @return {Class} A proxied version of the `Target`.
  * @ignore
  */
-const composeWith = (Target, Enhancement) => {
+const proxyClass = (Target, Enhancement) => {
   const injectData = getInjectData(Target.inject, Enhancement.inject);
   return new Proxy(Target, {
     construct: (TargetCls, args) => {
@@ -156,28 +156,21 @@ const composeWith = (Target, Enhancement) => {
   });
 };
 /**
- * Enhances an Aurelia's ViewModel class with another classes.
- * @param {Class}    Target       The ViewModel to enhance.
+ * Creates a function to enhance an Aurelia's ViewModel class with other class(es).
+ * This method has this sintax because is intended to be used as a decorator.
+ * @example
+ * <caption>As decorator</caption>
+ * \@enhance(MyEnhancement)
+ * class MyViewModel { ... }
+ * @example
+ * <caption>As function:</caption>
+ * enhance(MyEnhancement)(MyViewModel)
  * @param {...Class} enhancements The class or list of classes to enhance the ViewModel.
- * @return {Class} A proxied version of the `Target`.
+ * @return {EnhancementCreator}
  */
-const composeViewModel = (Target, ...enhancements) => enhancements.reduce(
-  (Current, Enhancement) => composeWith(Current, Enhancement),
+const enhance = (...enhancements) => (Target) => enhancements.reduce(
+  (Current, Enhancement) => proxyClass(Current, Enhancement),
   Target
 );
 
-/**
- * This is the decorator version of {@link composeViewModel}. It allows you enhance an Aurelia's
- * ViewModel class with another classes.
- * @param {...Class} enhancements The class or list of classes to enhance the ViewModel.
- * @return {DecoratorCallback}
- */
-const compose = (...enhancements) => (Target) => composeViewModel(
-  Target,
-  ...enhancements
-);
-
-module.exports = {
-  compose,
-  composeViewModel,
-};
+module.exports = enhance;

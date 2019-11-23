@@ -1,20 +1,20 @@
 # Aurelia HOVM
 
-Use high order functionality on your Aurelia's view models
-
+Enhance your Aurelia's view models with high order functionality
 
 ## Introduction
 
-> If you are wondering why I built this, go to the [Motivation](#motivation) section.
+> - If you are wondering why I built this, go to the [Motivation](#motivation) section.
+> - HOVM stands for "High order ViewModel"
 
-This library allows you to enhance the functionality of your Aurelia ViewModel classes using a high-order-like approach:
+Here's a really basic example of what you can achieve using this library:
 
 ```js
 // myComponent.js
-import { compose } from 'aurelia-hovm';
+import { enhance } from 'aurelia-hovm';
 import LogStatus from './logStatus';
 
-@compose(LogStatus)
+@enhance(LogStatus)
 class MyComponent {}
 
 export { MyComponent };
@@ -34,13 +34,14 @@ When your component gets attached to the DOM (or gets detached), via the enhance
 
 ## Usage
 
-As you saw on the example above, the way it works is pretty straightforward: you define an enhancement class with methods you want to be called when the ones of the target class are triggered, and then add the enhancement to the target ViewModel using the `compose` decorator.
+As you saw on the example above, the way it works is pretty straightforward:
 
-### Creating an enhancement
+1. Define an enhancement class with methods you want to be called when the ones of the ViewModel are triggered.
+2. Add the enhancement to the ViewModel using the `enhance` decorator.
 
-While the idea is simple and you can (correctly) assume that the example above was all you needed in order to create your own enhancement, there are few features that may be useful for you:
+There are also a few extra features that may be useful for you:
 
-#### Accessing the ViewModel
+### Access the ViewModel
 
 When instantiating an enhancement, the library sends to a reference of the ViewModel instance, so you can access methods and properties on your custom methods.
 
@@ -101,10 +102,10 @@ In this case it was really easy because the property is a `boolean` and the `if`
 Ok, let's add it to the form:
 
 ```js
-import { compose } from 'aurelia-hovm';
+import { enhance } from 'aurelia-hovm';
 import { FormConfirmation } from '...';
 
-@compose(FormConfirmation)
+@enhance(FormConfirmation)
 class MyForm {
   isSaved = false;
   ...
@@ -115,7 +116,7 @@ export { MyForm };
 
 And that's all, you can now add it to the other four forms using the enhancement.
 
-#### Dependency injection
+### Dependency injection
 
 Just like on any other class you use in the Aurelia context, you can use the `@inject` decorator on an enhancement in order to inject dependencies.
 
@@ -146,7 +147,7 @@ Is that simple! Just like a regular component/service.
 
 This the feature that makes this library Aurelia-specific.
 
-#### Enhance an enhancement
+### Enhance an enhancement
 
 As mentioned above, dependency injection is the only thing that makes this library Aurelia-specific, and it's an "optional feature", which means that you can enhance any kind of class.
 
@@ -176,10 +177,10 @@ export { PublishStatus };
 Now we can create an enhance `LogStatus` with `PublishStatus`:
 
 ```js
-import { compose } from 'aurelia-hovm';
+import { enhance } from 'aurelia-hovm';
 import { PublishStatus } from '...';
 
-@compose(PublishStatus)
+@enhance(PublishStatus)
 class LogStatus {
   attached() {
     console.log('attached :D!');
@@ -190,42 +191,38 @@ class LogStatus {
 }
 ```
 
-That was just to prove the point that you can enhance an enhancement, but there are two other simpler ways in which you can achieve the same result:
+That was just to prove the point that you can enhance an enhancement, but there are two other (and simpler) ways in which you can achieve the same result:
 
-##### composeViewModel
+#### The decorator as a function
 
-This is the same as using the decorator:
+Decorators are just functions, in this case, a function that returns a function:
 
 ```js
-composeViewModel(ViewModel, ...Enhancements): Proxy<ViewModel>
+enhance(...Enhancements)(ViewModel): Proxy<ViewModel>
 ```
 
 So, instead of enhancing `LogStatus` with `PublishStatus`, we can create a new enhancement with both of them:
 
 ```js
-import { composeViewModel } from 'aurelia-hovm';
+import { enhance } from 'aurelia-hovm';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
-export const PublishAndLogStatus = composeViewModel(LogStatus, PublishStatus);
+export const PublishAndLogStatus = enhance(PublishStatus)(LogStatus);
 ```
 
-##### Multiple enhancements at once
+#### Multiple enhancements at once
 
-The `compose` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` and the result would be the same:
+The `enhance` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` and the result would be the same:
 
 ```js
-import { compose } from 'aurelia-hovm';
+import { enhance } from 'aurelia-hovm';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
-@compose(LogStatus, PublishStatus)
+@enhance(LogStatus, PublishStatus)
 class MyComponent {}
 ```
-
-### Implementing an enhancement
-
-TBD
 
 ## Development
 
@@ -258,3 +255,7 @@ I use [ESDoc](http://esdoc.org) to generate HTML documentation for the project. 
 ### To-Dos
 
 I use `@todo` comments to write all the pending improvements and fixes, and [Leasot](https://yarnpkg.com/en/package/leasot) to generate a report. The script that runs it is on `./utils/scripts/todo`.
+
+## Motivation
+
+TBD
