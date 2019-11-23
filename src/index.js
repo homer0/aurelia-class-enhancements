@@ -29,24 +29,28 @@ const getInjectData = (target = [], enhancement = []) => {
   };
 };
 
-const composeFn = (target, enhancement) => (...args) => {
+const composeMethod = (target, enhancement) => (...args) => {
   const enhanced = enhancement(...args);
   return enhanced && typeof enhanced.then === 'function' ?
-    enhanced.then((value) => target(value, ...args)) :
+    enhanced.then(() => target(...args)) :
     target(...args);
 };
 
 const enhanceInstance = (target, enhancement) => new Proxy(target, {
   get: (targetCls, name) => {
     let result;
-    if (
-      typeof targetCls[name] === 'function' &&
-      !isNativeFn(targetCls[name]) &&
-      typeof enhancement[name] === 'function'
-    ) {
-      result = composeFn(targetCls[name], enhancement[name]);
+    const targetValue = targetCls[name];
+    const targetIsFn = typeof targetValue === 'function';
+    const enhancementValue = enhancement[name];
+    const enhancementIsFn = typeof enhancementValue === 'function';
+    if (targetIsFn && isNativeFn(targetValue)) {
+      result = targetValue;
+    } else if (enhancementIsFn) {
+      result = targetIsFn ?
+        composeMethod(targetValue, enhancementValue) :
+        enhancementValue;
     } else {
-      result = targetCls[name];
+      result = targetValue;
     }
 
     return result;
@@ -60,7 +64,7 @@ const composeWith = (Target, Enhancement) => {
       const targetInstance = new TargetCls(...injectData.getForTarget(args));
       const enhancementInstance = new Enhancement(
         targetInstance,
-        ...injectData.getForEnhacement(args)
+        ...injectData.getForEnhancement(args)
       );
 
       return enhanceInstance(targetInstance, enhancementInstance);
