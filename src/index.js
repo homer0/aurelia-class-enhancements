@@ -87,10 +87,7 @@ const compose = (...enhancements) => (Target) => composeViewModel(
   ...enhancements
 );
 
-module.exports = new Proxy(compose, {
-  get: (target, name) => (
-    name === 'composeViewModel' ?
-      composeViewModel :
-      target[name]
-  ),
-});
+module.exports = {
+  compose,
+  composeViewModel,
+};

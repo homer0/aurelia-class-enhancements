@@ -1,7 +1,7 @@
 jest.unmock('/src/index');
 
 require('jasmine-expect');
-const compose = require('/src/index');
+const { compose, composeViewModel } = require('/src/index');
 
 describe('aurelia-hovm', () => {
   const delayExec = (fn) => new Promise((resolve) => {
@@ -14,7 +14,7 @@ describe('aurelia-hovm', () => {
   it('should have public functions', () => {
     // Given/When/Then
     expect(compose).toBeFunction();
-    expect(compose.composeViewModel).toBeFunction();
+    expect(composeViewModel).toBeFunction();
   });
 
   it('should enhance a view model and call the methods from the hovms', () => {
@@ -156,7 +156,7 @@ describe('aurelia-hovm', () => {
     let dependencies = null;
     let sut = null;
     // When
-    Sut = compose.composeViewModel(Base, Enhance);
+    Sut = composeViewModel(Base, Enhance);
     dependencies = Sut.inject;
     sut = new Sut(...dependencies);
     // Then
@@ -198,7 +198,7 @@ describe('aurelia-hovm', () => {
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (compose.composeViewModel(Base, Enhance))();
+    sut = new (composeViewModel(Base, Enhance))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -218,7 +218,7 @@ describe('aurelia-hovm', () => {
     const arg = 'hello world!';
     let sut = null;
     // When
-    sut = new (compose.composeViewModel(Base, Enhance))();
+    sut = new (composeViewModel(Base, Enhance))();
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -238,7 +238,7 @@ describe('aurelia-hovm', () => {
     let sut = null;
     let result = null;
     // When
-    sut = new (compose.composeViewModel(Base, Enhance))();
+    sut = new (composeViewModel(Base, Enhance))();
     result = sut.toString();
     // Then
     expect(sut).toBeInstanceOf(Base);
@@ -260,7 +260,7 @@ describe('aurelia-hovm', () => {
     let Sut = null;
     let result = null;
     // When
-    Sut = compose.composeViewModel(Base, Enhance);
+    Sut = composeViewModel(Base, Enhance);
     result = Sut.staticProp;
     // Then
     expect(result).toBe(Base.staticProp);
