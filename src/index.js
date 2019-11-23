@@ -83,21 +83,44 @@ const getInjectData = (target = [], enhancement = []) => {
   };
 };
 /**
- * This is called from the proxy created on {@link enhanceInstance} when the target instance
- * and the enhance instance implements the samemethod.
- * The function will call first the enhance function and, if the returned value is a promise,
- * it will call the target function after it gets resolved; otherwise, it will call it immediately
- * after.
- * @param {function} target      The method that was called from the ViewModel.
- * @param {function} enhancement The version of the method from the enhancement class.
- * @return {function} A version of the method that calls both, the enhancement and the original.
+ * This is called from the proxy created on {@link enhanceInstance} when the enhancement
+ * implements a method of the target that is being requested.
+ * The function will first call the enhanced method, then evaluate whether it should resolved as
+ * a promise (becuase the method returned a `Promise`) or sync, check if the target implements
+ * the lifecycle method to recive what the enhancement returned and finally, call the original
+ * method.
+ * @param {Object}  target      The target ViewModel.
+ * @param {Object}  enhancement The instance with the enhanced methods.
+ * @param {String}  name        The name of the method being requested.
+ * @param {Boolean} callTarget  Whether or not the target method should be called.
+ * @return {Function} A version of the method that calls both, the enhancement and the original.
  * @ignore
  */
-const composeMethod = (target, enhancement) => (...args) => {
-  const enhanced = enhancement(...args);
-  return enhanced && typeof enhanced.then === 'function' ?
-    enhanced.then(() => target(...args)) :
-    target(...args);
+const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
+  const enhancedMethod = enhancement[name];
+  const enhancedValue = enhancedMethod(...args);
+  const normalizedName = name.replace(/^[a-z]/, (match) => match.toUpperCase());
+  const lcMethodName = `enhanced${normalizedName}Return`;
+  const hasLCMethod = typeof target[lcMethodName] === 'function';
+  let result;
+  const isPromise = enhancedValue && typeof enhancedValue.then === 'function';
+  if (isPromise) {
+    result = enhancedValue.then((value) => {
+      if (hasLCMethod) {
+        target[lcMethodName](value, enhancement);
+      }
+
+      return callTarget ? target[name](...args) : value;
+    });
+  } else {
+    if (hasLCMethod) {
+      target[lcMethodName](enhancedValue, enhancement);
+    }
+
+    result = callTarget ? target[name](...args) : enhancedValue;
+  }
+
+  return result;
 };
 /**
  * Creates a proxy for a ViewModel instance so when a method is called, it will check if the
@@ -117,9 +140,7 @@ const enhanceInstance = (target, enhancement) => new Proxy(target, {
     if (targetIsFn && isNativeFn(targetValue)) {
       result = targetValue;
     } else if (enhancementIsFn) {
-      result = targetIsFn ?
-        composeMethod(targetValue, enhancementValue) :
-        enhancementValue;
+      result = composeMethod(targetCls, enhancement, name, targetIsFn);
     } else {
       result = targetValue;
     }

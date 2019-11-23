@@ -6,8 +6,7 @@ const enhance = require('/src/index');
 describe('aurelia-hovm', () => {
   const delayExec = (fn) => new Promise((resolve) => {
     setTimeout(() => {
-      fn();
-      resolve();
+      resolve(fn());
     }, 1);
   });
 
@@ -56,6 +55,43 @@ describe('aurelia-hovm', () => {
     expect(enhOneAttached).toHaveBeenCalledWith(arg);
     expect(baseAttached).toHaveBeenCalledTimes(1);
     expect(baseAttached).toHaveBeenCalledWith(arg);
+  });
+
+  it('should recive the "enhanced returns" on a lifecycle method', () => {
+    // Given
+    const baseId = 'base-vm';
+    const baseAttached = jest.fn(() => baseId);
+    const baseAttachedLifeCycle = jest.fn();
+    class Base {
+      attached(...args) {
+        return baseAttached(...args);
+      }
+
+      enhancedAttachedReturn(...args) {
+        baseAttachedLifeCycle(...args);
+      }
+    }
+    const enhId = 'enh-one-vm';
+    const enhAttached = jest.fn(() => enhId);
+    class Enhancement {
+      attached(...args) {
+        return enhAttached(...args);
+      }
+    }
+    const arg = 'hello world!';
+    let sut = null;
+    let result = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    result = sut.attached(arg);
+    // Then
+    expect(result).toBe(baseId);
+    expect(enhAttached).toHaveBeenCalledTimes(1);
+    expect(enhAttached).toHaveBeenCalledWith(arg);
+    expect(baseAttached).toHaveBeenCalledTimes(1);
+    expect(baseAttached).toHaveBeenCalledWith(arg);
+    expect(baseAttachedLifeCycle).toHaveBeenCalledTimes(1);
+    expect(baseAttachedLifeCycle).toHaveBeenCalledWith(enhId, expect.any(Enhancement));
   });
 
   it('should enhance a view model that was already enhanced', () => {
@@ -153,6 +189,43 @@ describe('aurelia-hovm', () => {
     });
   });
 
+  it('should recive the "enhanced returns" on a lifecycle method (promise)', () => {
+    // Given
+    const baseId = 'base-vm';
+    const baseAttached = jest.fn(() => baseId);
+    const baseAttachedLifeCycle = jest.fn();
+    class Base {
+      attached(...args) {
+        return delayExec(() => baseAttached(...args));
+      }
+
+      enhancedAttachedReturn(...args) {
+        baseAttachedLifeCycle(...args);
+      }
+    }
+    const enhId = 'enh-one-vm';
+    const enhAttached = jest.fn(() => enhId);
+    class Enhancement {
+      attached(...args) {
+        return delayExec(() => enhAttached(...args));
+      }
+    }
+    const arg = 'hello world!';
+    let sut = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    return sut.attached(arg).then((result) => {
+      // Then
+      expect(result).toBe(baseId);
+      expect(enhAttached).toHaveBeenCalledTimes(1);
+      expect(enhAttached).toHaveBeenCalledWith(arg);
+      expect(baseAttached).toHaveBeenCalledTimes(1);
+      expect(baseAttached).toHaveBeenCalledWith(arg);
+      expect(baseAttachedLifeCycle).toHaveBeenCalledTimes(1);
+      expect(baseAttachedLifeCycle).toHaveBeenCalledWith(enhId, expect.any(Enhancement));
+    });
+  });
+
   it('should enhance a view model and merge the hovms dependencies', () => {
     // Given
     const services = {
@@ -239,6 +312,28 @@ describe('aurelia-hovm', () => {
     expect(sut).toBeInstanceOf(Base);
     expect(enhanceAttached).toHaveBeenCalledTimes(1);
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
+  });
+
+  it('should call a hovm method even if its not defined on the base (promise)', () => {
+    // Given
+    class Base {}
+    const enhanceAttached = jest.fn();
+    class Enhancement {
+      attached(...args) {
+        return delayExec(() => enhanceAttached(...args));
+      }
+    }
+    const arg = 'hello world!';
+    let sut = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    return sut.attached(arg)
+    .then(() => {
+      // Then
+      expect(sut).toBeInstanceOf(Base);
+      expect(enhanceAttached).toHaveBeenCalledTimes(1);
+      expect(enhanceAttached).toHaveBeenCalledWith(arg);
+    });
   });
 
   it('should call a base method even if its not defined on the hovm', () => {

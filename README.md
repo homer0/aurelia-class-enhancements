@@ -224,6 +224,43 @@ import { PublishStatus } from '...';
 class MyComponent {}
 ```
 
+### Lifecycle method
+
+Let's say we have this enhancement:
+
+```js
+class FormConfirmation {
+  constructor(viewModel) {
+    this._viewModel = viewModel;
+  }
+
+  canDeactivate() {
+    if (this._viewModel.isSaved) {
+      return true;
+    }
+
+    return new Promise((resolve) => {
+      const answer = confirm('Confirm that you want to leave without saving');
+      resolve(answer);
+    });
+  }
+}
+```
+
+But on the ViewModel, you want to add some other functionality that also needs to run on the `canDeactivate` but only if the enhanced method returned `false`.
+
+I didn't want to modify the signature of the enhanced method because, if the method has optional parameters, it would end up being a total mess.
+
+The easiest way to solve this is with the lifecycle method the library uses to send the returned value from the enhanced method.
+
+The method, is called `enhanced[OriginalMethodName]Return` (even if the method name starts with lowercase, the library will make the first letter uppercase) and this is the signature:
+
+```js
+enhancedCanDeactivateReturn(value, enhancementInstance): void
+```
+
+If the ViewModel implements it, the library will call it with whatever value the enhanced method returned, and a reference to the enhancement class instance.
+
 ## Development
 
 ### NPM/Yarn tasks
