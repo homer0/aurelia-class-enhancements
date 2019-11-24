@@ -1,0 +1,1083 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "/**\n * @external {Class} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes\n */\n\n/**\n * @typedef {function} EnhancementCreator\n * @param {Class} Target The class to enhance.\n * @return {Proxy<Class>} A proxied version of the `Target`.\n */\n\n/**\n * @typedef {function} GetDependencies\n * @param {Array} list All the dependencies Aurelia returned, for both the target class and the\n *                     enhancement class.\n * @return {Array} A list of dependencies for the requested case, be the target class or the\n *                 enhancement class.\n * @ignore\n */\n\n/**\n * These are necessary resources for the `isNativeFn` function.\n * @ignore\n */\nconst { toString } = Object.prototype;\n/**\n * @ignore\n */\nconst { toString: fnToString } = Function.prototype;\n/**\n * @ignore\n */\nconst reBase = String(toString)\n.replace(/[.*+?^${}()|[\\]\\/\\\\]/g, '\\\\$&')\n.replace(/toString|(function).*?(?=\\\\\\()| for .+?(?=\\\\\\])/g, '$1.*?');\n/**\n * @ignore\n */\nconst reNative = RegExp(`^${reBase}$`);\n/**\n * Checks whether a function is native or not.\n * @param {function} fn The function to validate.\n * @return {Boolean}\n * @see https://davidwalsh.name/detect-native-function\n * @ignore\n */\nconst isNativeFn = (fn) => fnToString.call(fn).match(reNative);\n/**\n * This utility function takes care of generating a unique list of dependencies for both, the\n * target and the class that enhances it. It then provides methods to extract the dependencies\n * of each one when Aurelia is done instantiating them.\n * @param {Array} [target=[]]      The list of dependencies for the target class.\n * @param {Array} [enhancement=[]] The list of dependencies for the enhance class.\n * @return {Object}\n * @property {Array}           list              The unique list of all the dependencies both\n *                                               classes need.\n * @property {GetDependencies} getForTarget      Given the list of all the obtained dependencies,\n *                                               it filters the ones needed for the target\n *                                               class.\n * @property {GetDependencies} getForEnhancement Given the list of all the obtained dependencies,\n *                                               it filters the ones needed for the enhancement\n *                                               class.\n * @ignore\n */\nconst getInjectData = (target = [], enhancement = []) => {\n  const list = target.slice();\n  const enhancementPositions = {};\n  enhancement.forEach((dep) => {\n    const targetIndex = list.indexOf(dep);\n    if (targetIndex > -1) {\n      enhancementPositions[dep] = targetIndex;\n    } else {\n      list.push(dep);\n      enhancementPositions[dep] = list.length - 1;\n    }\n  });\n\n  return {\n    list,\n    getForTarget: (values) => values.slice(0, target.length),\n    getForEnhancement: (values) => enhancement.map((dep) => (\n      values[enhancementPositions[dep]]\n    )),\n  };\n};\n/**\n * This is called from the proxy created on {@link enhanceInstance} when the enhancement\n * implements a method of the target that is being requested.\n * The function will first call the enhanced method, then evaluate whether it should resolved as\n * a promise (becuase the method returned a `Promise`) or sync, check if the target implements\n * the lifecycle method to recive what the enhancement returned and finally, call the original\n * method.\n * @param {Object}  target      The target class instance.\n * @param {Object}  enhancement The instance with the enhanced methods.\n * @param {String}  name        The name of the method being requested.\n * @param {Boolean} callTarget  Whether or not the target method should be called.\n * @return {Function} A version of the method that calls both, the enhancement and the original.\n * @ignore\n */\nconst composeMethod = (target, enhancement, name, callTarget) => (...args) => {\n  const enhancedMethod = enhancement[name];\n  const enhancedValue = enhancedMethod(...args);\n  const normalizedName = name.replace(/^[a-z]/, (match) => match.toUpperCase());\n  const lcMethodName = `enhanced${normalizedName}Return`;\n  const hasLCMethod = typeof target[lcMethodName] === 'function';\n  let result;\n  const isPromise = enhancedValue && typeof enhancedValue.then === 'function';\n  if (isPromise) {\n    result = enhancedValue.then((value) => {\n      if (hasLCMethod) {\n        target[lcMethodName](value, enhancement);\n      }\n\n      return callTarget ? target[name](...args) : value;\n    });\n  } else {\n    if (hasLCMethod) {\n      target[lcMethodName](enhancedValue, enhancement);\n    }\n\n    result = callTarget ? target[name](...args) : enhancedValue;\n  }\n\n  return result;\n};\n/**\n * Creates a proxy for a target class instance so when a method is called, it will check if the\n * enhancement class implements its in order to trigger that one before the original.\n * @param {Object} target      The target class instance to proxy.\n * @param {Object} enhancement The instance that will add methods to the target class.\n * @return {Object} A proxied version of the `target`.\n * @ignore\n */\nconst enhanceInstance = (target, enhancement) => new Proxy(target, {\n  get: (targetCls, name) => {\n    let result;\n    const targetValue = targetCls[name];\n    const targetIsFn = typeof targetValue === 'function';\n    const enhancementValue = enhancement[name];\n    const enhancementIsFn = typeof enhancementValue === 'function';\n    if (targetIsFn && isNativeFn(targetValue)) {\n      result = targetValue;\n    } else if (enhancementIsFn) {\n      result = composeMethod(targetCls, enhancement, name, targetIsFn);\n    } else {\n      result = targetValue;\n    }\n\n    return result;\n  },\n});\n/**\n * Creates a proxy from a target class declaration in order to:\n * 1. Concatenate the list of dependencies both classes need.\n * 2. Instance both the target and the enhancement classes, sending the right dependencies.\n * @param {Class} Target      The target class to proxy.\n * @param {Class} Enhancement The class that will add methods to the target.\n * @return {Class} A proxied version of the `Target`.\n * @ignore\n */\nconst proxyClass = (Target, Enhancement) => {\n  const injectData = getInjectData(Target.inject, Enhancement.inject);\n  return new Proxy(Target, {\n    construct: (TargetCls, args) => {\n      const targetInstance = new TargetCls(...injectData.getForTarget(args));\n      const enhancementInstance = new Enhancement(\n        targetInstance,\n        ...injectData.getForEnhancement(args)\n      );\n\n      return enhanceInstance(targetInstance, enhancementInstance);\n    },\n    get: (target, name) => (\n      name === 'inject' ?\n        injectData.list :\n        target[name]\n    ),\n  });\n};\n/**\n * Creates a function to enhance an Aurelia's class with other class(es).\n * This method has this sintax because is intended to be used as a decorator.\n * @example\n * <caption>As decorator</caption>\n * \\@enhance(MyEnhancement)\n * class MyViewModel { ... }\n * @example\n * <caption>As function:</caption>\n * enhance(MyEnhancement)(MyViewModel)\n * @param {...Class} enhancements The class or list of classes to enhance the target.\n * @return {EnhancementCreator}\n */\nconst enhance = (...enhancements) => (Target) => enhancements.reduce(\n  (Current, Enhancement) => proxyClass(Current, Enhancement),\n  Target\n);\n\nmodule.exports = enhance;\n",
+    "static": true,
+    "longname": "/Users/homer0/CODE/aurelia/aurelia-class-enhancements/src/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "Class",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~Class",
+    "access": "public",
+    "description": ""
+  },
+  {
+    "__docId__": 50,
+    "kind": "typedef",
+    "name": "EnhancementCreator",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~EnhancementCreator",
+    "access": "public",
+    "description": "",
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Class"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Target",
+        "description": "The class to enhance."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Proxy<Class>"
+      ],
+      "spread": false,
+      "description": "A proxied version of the `Target`."
+    },
+    "type": {
+      "types": [
+        "function"
+      ],
+      "optional": false,
+      "name": "EnhancementCreator"
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "typedef",
+    "name": "GetDependencies",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~GetDependencies",
+    "access": "public",
+    "description": "",
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "list",
+        "description": "All the dependencies Aurelia returned, for both the target class and the\n                    enhancement class."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": "A list of dependencies for the requested case, be the target class or the\n                enhancement class."
+    },
+    "type": {
+      "types": [
+        "function"
+      ],
+      "optional": false,
+      "name": "GetDependencies"
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "toString",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~toString",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "These are necessary resources for the `isNativeFn` function.",
+    "lineNumber": 24,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "name": "toString",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~toString",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 28,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "variable",
+    "name": "reBase",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~reBase",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 32,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "variable",
+    "name": "reNative",
+    "memberof": "src/index.js",
+    "static": true,
+    "longname": "src/index.js~reNative",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 38,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "name": "isNativeFn",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~isNativeFn",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "Checks whether a function is native or not.",
+    "see": [
+      "https://davidwalsh.name/detect-native-function"
+    ],
+    "lineNumber": 46,
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "fn",
+        "description": "The function to validate."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "getInjectData",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~getInjectData",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "This utility function takes care of generating a unique list of dependencies for both, the\ntarget and the class that enhances it. It then provides methods to extract the dependencies\nof each one when Aurelia is done instantiating them.",
+    "lineNumber": 64,
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "[]",
+        "defaultRaw": [],
+        "name": "target",
+        "description": "The list of dependencies for the target class."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "[]",
+        "defaultRaw": [],
+        "name": "enhancement",
+        "description": "The list of dependencies for the enhance class."
+      }
+    ],
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "list",
+        "description": "The unique list of all the dependencies both\n                                              classes need."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "GetDependencies"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "getForTarget",
+        "description": "Given the list of all the obtained dependencies,\n                                              it filters the ones needed for the target\n                                              class."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "GetDependencies"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "getForEnhancement",
+        "description": "Given the list of all the obtained dependencies,\n                                              it filters the ones needed for the enhancement\n                                              class."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "function",
+    "name": "composeMethod",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~composeMethod",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "This is called from the proxy created on {@link enhanceInstance} when the enhancement\nimplements a method of the target that is being requested.\nThe function will first call the enhanced method, then evaluate whether it should resolved as\na promise (becuase the method returned a `Promise`) or sync, check if the target implements\nthe lifecycle method to recive what the enhancement returned and finally, call the original\nmethod.",
+    "lineNumber": 99,
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "target",
+        "description": "The target class instance."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "enhancement",
+        "description": "The instance with the enhanced methods."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "The name of the method being requested."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "callTarget",
+        "description": "Whether or not the target method should be called."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "A version of the method that calls both, the enhancement and the original."
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "function",
+    "name": "enhanceInstance",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~enhanceInstance",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "Creates a proxy for a target class instance so when a method is called, it will check if the\nenhancement class implements its in order to trigger that one before the original.",
+    "lineNumber": 133,
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "target",
+        "description": "The target class instance to proxy."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "enhancement",
+        "description": "The instance that will add methods to the target class."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "A proxied version of the `target`."
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "function",
+    "name": "proxyClass",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~proxyClass",
+    "access": "public",
+    "export": false,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": null,
+    "description": "Creates a proxy from a target class declaration in order to:\n1. Concatenate the list of dependencies both classes need.\n2. Instance both the target and the enhancement classes, sending the right dependencies.",
+    "lineNumber": 160,
+    "ignore": true,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Class"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Target",
+        "description": "The target class to proxy."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Class"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Enhancement",
+        "description": "The class that will add methods to the target."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Class"
+      ],
+      "spread": false,
+      "description": "A proxied version of the `Target`."
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "function",
+    "name": "enhance",
+    "memberof": "src/index.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/index.js~enhance",
+    "access": "public",
+    "export": true,
+    "importPath": "aurelia-class-enhancements",
+    "importStyle": "enhance",
+    "description": "Creates a function to enhance an Aurelia's class with other class(es).\nThis method has this sintax because is intended to be used as a decorator.",
+    "examples": [
+      "<caption>As decorator</caption>\n\\@enhance(MyEnhancement)\nclass MyViewModel { ... }",
+      "<caption>As function:</caption>\nenhance(MyEnhancement)(MyViewModel)"
+    ],
+    "lineNumber": 192,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "...Class"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "enhancements",
+        "description": "The class or list of classes to enhance the target."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "EnhancementCreator"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "kind": "index",
+    "content": "# aurelia-class-enhancements\n\n[![Travis](https://img.shields.io/travis/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://travis-ci.org/homer0/aurelia-class-enhancements)\n[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=master)\n[![David](https://img.shields.io/david/dev/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://david-dm.org/homer0/aurelia-class-enhancements)\n\nEnhance your Aurelia's classes with high order functionality\n\n## Introduction\n\n> If you are wondering why I built this, go to the [Motivation](#motivation) section.\n\nHere's a really basic example of what you can achieve using this library:\n\n```js\n// myComponent.js\nimport { enhance } from 'aurelia-class-enhancements';\nimport LogStatus from './logStatus';\n\n@enhance(LogStatus)\nclass MyComponent {}\n\nexport { MyComponent };\n\n// logStatus.js\nclass LogStatus {\n  attached() {\n    console.log('attached :D!');\n  }\n  detached() {\n    console.log('detached D:!');\n  }\n}\n```\n\nWhen your component gets attached to the DOM (or gets detached), via the enhancement class `LogStatus`, it will log a message on the console; all of this without having to write the functionality on your component class and without needing class inheritance.\n\n## Usage\n\nAs you saw on the example above, the way it works is pretty straightforward:\n\n1. Define an enhancement class with methods you want to be called when the ones of the target class are triggered.\n2. Add the enhancement to the target class using the `enhance` decorator.\n\n### Access the target class\n\nWhen instantiating an enhancement, the library sends to a reference of the target class instance to the enhancement constructor, so you can access methods and properties on your custom methods.\n\nLet's say you have a component that renders a form where the user saves some important information, and if the user were to leave the route without saving the information, you would want to use a prompt to ask for confirmation.\n\nA basic approach would be to have a flag indicating if the changes are saved and then use the `canDeactivate` lifecycle method to decide whether to show the prompt or not:\n\n```js\nclass MyForm {\n  isSaved = false;\n  ...\n  canDeactivate() {\n    // If everything is saved, go away.\n    if (isSaved) {\n      return true;\n    }\n\n    // Let's make the prompt async.\n    return new Promise((resolve) => {\n      // ask for the user confirmation.\n      const answer = confirm('Confirm that you want to leave without saving');\n      // resolve the promise with the answer.\n      resolve(answer);\n    });\n  }\n}\n\nexport { MyForm };\n```\n\nIt works, is simple and you didn't have to involve any external logic. But now, what if you have to implement this same logic on four more forms? That's when an enhancement is useful.\n\nLet's write an enhancement that uses the reference for the ViewModel in order to verify if the user needs to be prompted.\n\n```js\nclass FormConfirmation {\n  constructor(viewModel) {\n    this._viewModel = viewModel;\n  }\n\n  canDeactivate() {\n    if (this._viewModel.isSaved) {\n      return true;\n    }\n\n    return new Promise((resolve) => {\n      const answer = confirm('Confirm that you want to leave without saving');\n      resolve(answer);\n    });\n  }\n}\n```\n\nIt's the same functionality, but it now checks the `isSaved` property form the ViewModel.\n\n> In this case it was really easy because the property is a `boolean` and the `if` checks with _falsy_, but we could've check if the property was defined and use a different default, like \"if the ViewModel doesn't have the property, the user can always leave without confirmation\".\n\nOk, let's add it to the form:\n\n```js\nimport { enhance } from 'aurelia-class-enhancements';\nimport { FormConfirmation } from '...';\n\n@enhance(FormConfirmation)\nclass MyForm {\n  isSaved = false;\n  ...\n}\n\nexport { MyForm };\n```\n\nAnd that's all, you can now add it to the other four forms using the enhancement.\n\n### Dependency injection\n\nJust like on any other class you use in the Aurelia context, you can use the `@inject` decorator on an enhancement in order to inject dependencies.\n\nWe'll use the enhancement from the first example and trigger an event before the log messages.\n\n```js\nimport { inject } from 'aurelia-framework';\nimport { EventAggregator } from 'aurelia-event-aggregator';\n\n@inject(EventAggregator);\nclass LogStatus {\n  constructor(viewModel, ea) {\n    this._viewModel = viewModel;\n    this._ea = ea;\n  }\n  attached() {\n    this._ea.publish('something:attached', this._viewModel);\n    console.log('attached :D!');\n  }\n  detached() {\n    this._ea.publish('something:detached', this._viewModel);\n    console.log('detached D:!');\n  }\n}\n```\n\n> This is the feature that makes this library Aurelia-specific.\n\n### Enhance an enhancement\n\nSince the library was made to enhance any kind of class, that means that you could also enhance an enhancement class.\n\nLet's take the example about dependency injection and move the events part to another enhancement:\n\n```js\nimport { inject } from 'aurelia-framework';\nimport { EventAggregator } from 'aurelia-event-aggregator';\n\n@inject(EventAggregator);\nclass PublishStatus {\n  constructor(viewModel, ea) {\n    this._viewModel = viewModel;\n    this._ea = ea;\n  }\n  attached() {\n    this._ea.publish('something:attached', this._viewModel);\n  }\n  detached() {\n    this._ea.publish('something:detached', this._viewModel);\n  }\n}\n\nexport { PublishStatus };\n```\n\nNow we can create an enhanced `LogStatus` with `PublishStatus`:\n\n```js\nimport { enhance } from 'aurelia-class-enhancements';\nimport { PublishStatus } from '...';\n\n@enhance(PublishStatus)\nclass LogStatus {\n  attached() {\n    console.log('attached :D!');\n  }\n  detached() {\n    console.log('detached D:!');\n  }\n}\n```\n\nThat was just to prove the point that you can enhance an enhancement, but there are two other, and simpler, ways in which you can achieve the same result:\n\n#### The decorator as a function\n\nDecorators are just functions, in this case, a function that returns a function:\n\n```js\nenhance(...Enhancements)(TargetClass): Proxy<TargetClass>\n```\n\nSo, instead of enhancing `LogStatus` with `PublishStatus`, we can create a new enhancement with both of them:\n\n```js\nimport { enhance } from 'aurelia-class-enhancements';\nimport { LogStatus } from '...';\nimport { PublishStatus } from '...';\n\nexport const PublishAndLogStatus = enhance(PublishStatus)(LogStatus);\n```\n\n#### Multiple enhancements at once\n\nThe `enhance` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` to the class with want to enhance and the result would be the same:\n\n```js\nimport { enhance } from 'aurelia-class-enhancements';\nimport { LogStatus } from '...';\nimport { PublishStatus } from '...';\n\n@enhance(LogStatus, PublishStatus)\nclass MyComponent {}\n```\n\n### Lifecycle method\n\nLet's say we have this enhancement:\n\n```js\nclass FormConfirmation {\n  constructor(viewModel) {\n    this._viewModel = viewModel;\n  }\n\n  canDeactivate() {\n    if (this._viewModel.isSaved) {\n      return true;\n    }\n\n    return new Promise((resolve) => {\n      const answer = confirm('Confirm that you want to leave without saving');\n      resolve(answer);\n    });\n  }\n}\n```\n\nBut on the ViewModel, you want to add some other functionality that also needs to run on the `canDeactivate`, but only if the enhanced method returned `false`.\n\nModifying the signature of the enhanced method to add an extra parameter wasn't an option, as it could end up messing up methods with optional parameters.\n\nThe easiest way to solve this was adding a _lifecycle method_ the library will call, if defined, with whatever was returned from the enhanced method.\n\nThe name of the method is dynamically generated based on the name of the original method: `enhanced[OriginalMethodName]Return` (even if the method name starts with lowercase, the library will make the first letter uppercase).\n\nThis is its signature:\n\n```js\nenhancedCanDeactivateReturn(value, enhancementInstance): void\n```\n\n## Development\n\n### NPM/Yarn tasks\n\n| Task       | Description                         |\n|------------|-------------------------------------|\n| `test`     | Run the project unit tests.         |\n| `lint`     | Lint the modified files.            |\n| `lint:all` | Lint the entire project code.       |\n| `docs`     | Generate the project documentation. |\n| `todo`     | List all the pending to-do's.       |\n\n### Repository hooks\n\nI use [husky](https://yarnpkg.com/en/package/husky) to automatically install the repository hooks so the code will be tested and linted before any commit and the dependencies updated after every merge. The configuration is on the `husky` property of the `package.json` and the hooks' files are on `./utils/hooks`.\n\n### Testing\n\nI use [Jest](https://facebook.github.io/jest/) with [Jest-Ex](https://yarnpkg.com/en/package/jest-ex) to test the project. The configuration file is on `./.jestrc.json`, the tests are on `./tests` and the script that runs it is on `./utils/scripts/test`.\n\n### Linting\n\nI use [ESlint](http://eslint.org) with [my own custom configuration](http://yarnpkg.com/en/package/eslint-plugin-homer0) to validate all the JS code. The configuration file for the project code is on `./.eslintrc` and the one for the tests is on `./tests/.eslintrc`. There's also an `./.eslintignore` to exclude some files on the process. The script that runs it is on `./utils/scripts/lint`.\n\n### Documentation\n\nI use [ESDoc](http://esdoc.org) to generate HTML documentation for the project. The configuration file is on `./.esdoc.json` and the script that runs it is on `./utils/scripts/docs`.\n\n### To-Dos\n\nI use `@todo` comments to write all the pending improvements and fixes, and [Leasot](https://yarnpkg.com/en/package/leasot) to generate a report. The script that runs it is on `./utils/scripts/todo`.\n\n## Motivation\n\n> I put this at the end because no one usually reads it :P.\n\nThe example about prompting the user when there's a form unsaved was a real case requirement for me, and while discussing which would be the best approach to implement it, there were three conclusions:\n\n1. OOP inheritance on the ViewModels sounds like a terrible idea; and you are limited to only one \"enhancement\".\n2. Mixins on \"real classes\" was a no-go.\n3. It should be something like React's high order components (I know high order functionality is not specific to React, but that's where it shines).\n\nSo, I wanted something similar to React's HOCs, but for classes, and a little bit closer to a HOF (function), since there's no JSX on Aurelia.\n\nLately, I've been playing around with Proxies on some of my other libraries, and they are **really powerful**; so I thought I could use a proxy on top of a class and the only complicated part would be to solve the dependency injection, as I wanted the enhancements to be able to access other services.\n\nI got a prototype working and that's when I realized that Aurelia makes \"heavy use\" of decorators, so instead of having a function to enhance the class before exporting it (like the React approach), I could \"decorate the class\":\n\n```js\n@enhance(MyEnhancement)\nclass MyComponent {}\n```\n\nYay :D!\n\n",
+    "longname": "/Users/homer0/CODE/aurelia/aurelia-class-enhancements/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"aurelia-class-enhancements\",\n  \"description\": \"Enhance your Aurelia's classes with high order functionality\",\n  \"homepage\": \"https://homer0.github.io/aurelia-class-enhancements/\",\n  \"version\": \"1.0.0\",\n  \"repository\": \"homer0/aurelia-class-enhancements\",\n  \"author\": \"Leonardo Apiwan (@homer0) <me@homer0.com>\",\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"aurelia\",\n    \"hoc\",\n    \"view-model\",\n    \"compose\",\n    \"decorator\"\n  ],\n  \"dependencies\": {},\n  \"devDependencies\": {\n    \"@babel/preset-env\": \"7.7.4\",\n    \"@babel/core\": \"7.7.4\",\n    \"@babel/plugin-transform-runtime\": \"7.7.4\",\n    \"coveralls\": \"^3.0.8\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"esdoc-node\": \"1.0.4\",\n    \"eslint\": \"^6.7.0\",\n    \"eslint-plugin-homer0\": \"^2.1.0\",\n    \"husky\": \"^3.1.0\",\n    \"jasmine-expect\": \"^4.0.3\",\n    \"jest-ex\": \"^6.1.2\",\n    \"jest-cli\": \"^24.9.0\",\n    \"leasot\": \"^9.2.0\",\n    \"wootils\": \"^2.6.5\"\n  },\n  \"engine-strict\": true,\n  \"engines\": {\n    \"node\": \">=8.10.0\",\n    \"npm\": \">=3.0.0\"\n  },\n  \"main\": \"src/index.js\",\n  \"scripts\": {\n    \"test\": \"./utils/scripts/test\",\n    \"lint\": \"./utils/scripts/lint\",\n    \"lint:all\": \"./utils/scripts/lint-all\",\n    \"docs\": \"./utils/scripts/docs\",\n    \"todo\": \"./utils/scripts/todo\"\n  },\n  \"husky\": {\n    \"hooks\": {\n      \"pre-commit\": \"./utils/hooks/pre-commit\",\n      \"post-merge\": \"./utils/hooks/post-merge\"\n    }\n  }\n}\n",
+    "longname": "/Users/homer0/CODE/aurelia/aurelia-class-enhancements/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]
