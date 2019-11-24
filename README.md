@@ -1,5 +1,9 @@
 # aurelia-class-enhancements
 
+[![Travis](https://img.shields.io/travis/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://travis-ci.org/homer0/aurelia-class-enhancements)
+[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=master)
+[![David](https://img.shields.io/david/dev/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://david-dm.org/homer0/aurelia-class-enhancements)
+
 Enhance your Aurelia's classes with high order functionality
 
 ## Introduction
