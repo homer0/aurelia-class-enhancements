@@ -290,4 +290,24 @@ I use `@todo` comments to write all the pending improvements and fixes, and [Lea
 
 ## Motivation
 
-TBD
+> I put this at the end because no one usually reads it :P.
+
+The example about prompting the user when there's a form unsaved was a real case requirement for me, and while discussing which would be the best approach to implement it, there were three conclusions:
+
+1. OOP inheritance on the ViewModels sounds like a terrible idea; and you are limited to only one "enhancement".
+2. Mixins on "real classes" was a no-go.
+3. It should be something like React's high order components (I know high order functionality is not specific to React, but that's where it shines).
+
+So, I wanted something similar to React's HOCs, but for classes, and a little bit closer to a HOF (function), since there's no JSX on Aurelia.
+
+Lately, I've been playing around with Proxies on some of my other libraries, and they are **really powerful**; so I thought I could use a proxy on top of a class and the only complicated part would be to solve the dependency injection, as I wanted the enhancements to be able to access other services.
+
+I got a prototype working and that's when I realized that Aurelia makes "heavy use" of decorators, so instead of having a function to enhance the class before exporting it (like the React approach), I could "decorate the class":
+
+```js
+@enhance(MyEnhancement)
+class MyComponent {}
+```
+
+Yay :D!
+
