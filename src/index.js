@@ -4,15 +4,15 @@
 
 /**
  * @typedef {function} EnhancementCreator
- * @param {Class} Target The ViewModel to enhance.
+ * @param {Class} Target The class to enhance.
  * @return {Proxy<Class>} A proxied version of the `Target`.
  */
 
 /**
  * @typedef {function} GetDependencies
- * @param {Array} list All the dependencies Aurelia returned, for both the ViewModel and the
+ * @param {Array} list All the dependencies Aurelia returned, for both the target class and the
  *                     enhancement class.
- * @return {Array} A list of dependencies for the requested case, be the ViewModel or the
+ * @return {Array} A list of dependencies for the requested case, be the target class or the
  *                 enhancement class.
  * @ignore
  */
@@ -46,15 +46,15 @@ const reNative = RegExp(`^${reBase}$`);
 const isNativeFn = (fn) => fnToString.call(fn).match(reNative);
 /**
  * This utility function takes care of generating a unique list of dependencies for both, the
- * ViewModel and the class that enhances it. It then provides methods to extract the dependencies
+ * target and the class that enhances it. It then provides methods to extract the dependencies
  * of each one when Aurelia is done instantiating them.
- * @param {Array} [target=[]]      The list of dependencies for the ViewModel.
+ * @param {Array} [target=[]]      The list of dependencies for the target class.
  * @param {Array} [enhancement=[]] The list of dependencies for the enhance class.
  * @return {Object}
  * @property {Array}           list              The unique list of all the dependencies both
  *                                               classes need.
  * @property {GetDependencies} getForTarget      Given the list of all the obtained dependencies,
- *                                               it filters the ones needed for the ViewModel
+ *                                               it filters the ones needed for the target
  *                                               class.
  * @property {GetDependencies} getForEnhancement Given the list of all the obtained dependencies,
  *                                               it filters the ones needed for the enhancement
@@ -89,7 +89,7 @@ const getInjectData = (target = [], enhancement = []) => {
  * a promise (becuase the method returned a `Promise`) or sync, check if the target implements
  * the lifecycle method to recive what the enhancement returned and finally, call the original
  * method.
- * @param {Object}  target      The target ViewModel.
+ * @param {Object}  target      The target class instance.
  * @param {Object}  enhancement The instance with the enhanced methods.
  * @param {String}  name        The name of the method being requested.
  * @param {Boolean} callTarget  Whether or not the target method should be called.
@@ -123,10 +123,10 @@ const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
   return result;
 };
 /**
- * Creates a proxy for a ViewModel instance so when a method is called, it will check if the
+ * Creates a proxy for a target class instance so when a method is called, it will check if the
  * enhancement class implements its in order to trigger that one before the original.
- * @param {Object} target      The ViewModel instance to proxy.
- * @param {Object} enhancement The instance that will add methods to the ViewModel.
+ * @param {Object} target      The target class instance to proxy.
+ * @param {Object} enhancement The instance that will add methods to the target class.
  * @return {Object} A proxied version of the `target`.
  * @ignore
  */
@@ -149,11 +149,11 @@ const enhanceInstance = (target, enhancement) => new Proxy(target, {
   },
 });
 /**
- * Creates a proxy from a target ViewModel declaration in order to:
+ * Creates a proxy from a target class declaration in order to:
  * 1. Concatenate the list of dependencies both classes need.
- * 2. Instance both the ViewModel and the enhancement class, sending the right dependencies.
- * @param {Class} Target      The ViewModel to proxy.
- * @param {Class} Enhancement The class that will add methods to the ViewModel.
+ * 2. Instance both the target and the enhancement classes, sending the right dependencies.
+ * @param {Class} Target      The target class to proxy.
+ * @param {Class} Enhancement The class that will add methods to the target.
  * @return {Class} A proxied version of the `Target`.
  * @ignore
  */
@@ -177,7 +177,7 @@ const proxyClass = (Target, Enhancement) => {
   });
 };
 /**
- * Creates a function to enhance an Aurelia's ViewModel class with other class(es).
+ * Creates a function to enhance an Aurelia's class with other class(es).
  * This method has this sintax because is intended to be used as a decorator.
  * @example
  * <caption>As decorator</caption>
@@ -186,7 +186,7 @@ const proxyClass = (Target, Enhancement) => {
  * @example
  * <caption>As function:</caption>
  * enhance(MyEnhancement)(MyViewModel)
- * @param {...Class} enhancements The class or list of classes to enhance the ViewModel.
+ * @param {...Class} enhancements The class or list of classes to enhance the target.
  * @return {EnhancementCreator}
  */
 const enhance = (...enhancements) => (Target) => enhancements.reduce(

@@ -3,14 +3,14 @@ jest.unmock('/src/index');
 require('jasmine-expect');
 const enhance = require('/src/index');
 
-describe('aurelia-hovm', () => {
+describe('aurelia-class-enhancements', () => {
   const delayExec = (fn) => new Promise((resolve) => {
     setTimeout(() => {
       resolve(fn());
     }, 1);
   });
 
-  it('should enhance a view model and call the methods from the hovms', () => {
+  it('should enhance a view model and call the methods from the enhancements', () => {
     // Given
     const callQueue = [];
     const baseId = 'base-vm';
@@ -135,7 +135,7 @@ describe('aurelia-hovm', () => {
     ]);
   });
 
-  it('should enhance a view model and call the methods from the hovms (promise)', () => {
+  it('should enhance a view model and call the methods from the enhancements (promise)', () => {
     // Given
     const callQueue = [];
     const baseId = 'base-vm';
@@ -226,7 +226,7 @@ describe('aurelia-hovm', () => {
     });
   });
 
-  it('should enhance a view model and merge the hovms dependencies', () => {
+  it('should enhance a view model and merge the enhancements dependencies', () => {
     // Given
     const services = {
       depOne: 'dep-one',
@@ -294,7 +294,7 @@ describe('aurelia-hovm', () => {
     );
   });
 
-  it('should call a hovm method even if its not defined on the base', () => {
+  it('should call a enhanced method even if its not defined on the base', () => {
     // Given
     class Base {}
     const enhanceAttached = jest.fn();
@@ -314,7 +314,7 @@ describe('aurelia-hovm', () => {
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
 
-  it('should call a hovm method even if its not defined on the base (promise)', () => {
+  it('should call a enhanced method even if its not defined on the base (promise)', () => {
     // Given
     class Base {}
     const enhanceAttached = jest.fn();
@@ -336,7 +336,7 @@ describe('aurelia-hovm', () => {
     });
   });
 
-  it('should call a base method even if its not defined on the hovm', () => {
+  it('should call a base method even if its not defined on the enhancement', () => {
     // Given
     const baseAttached = jest.fn();
     class Base {
@@ -356,7 +356,7 @@ describe('aurelia-hovm', () => {
     expect(baseAttached).toHaveBeenCalledWith(arg);
   });
 
-  it('shouldn\'t call hovm native methods even if they are defined', () => {
+  it('shouldn\'t call an enhancement native methods even if they are defined', () => {
     // Given
     class Base {}
     const enhanceToString = jest.fn();
@@ -376,7 +376,7 @@ describe('aurelia-hovm', () => {
     expect(enhanceToString).toHaveBeenCalledTimes(0);
   });
 
-  it('shouldn\'t return static properties from hovm', () => {
+  it('shouldn\'t return static properties from an enhancement', () => {
     // Given
     class Base {}
     Base.staticProp = 'base';

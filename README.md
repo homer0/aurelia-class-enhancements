@@ -1,17 +1,16 @@
-# Aurelia HOVM
+# aurelia-class-enhancements
 
-Enhance your Aurelia's view models with high order functionality
+Enhance your Aurelia's classes with high order functionality
 
 ## Introduction
 
-> - If you are wondering why I built this, go to the [Motivation](#motivation) section.
-> - HOVM stands for "High order ViewModel"
+> If you are wondering why I built this, go to the [Motivation](#motivation) section.
 
 Here's a really basic example of what you can achieve using this library:
 
 ```js
 // myComponent.js
-import { enhance } from 'aurelia-hovm';
+import { enhance } from 'aurelia-class-enhancements';
 import LogStatus from './logStatus';
 
 @enhance(LogStatus)
@@ -36,16 +35,14 @@ When your component gets attached to the DOM (or gets detached), via the enhance
 
 As you saw on the example above, the way it works is pretty straightforward:
 
-1. Define an enhancement class with methods you want to be called when the ones of the ViewModel are triggered.
-2. Add the enhancement to the ViewModel using the `enhance` decorator.
+1. Define an enhancement class with methods you want to be called when the ones of the target class are triggered.
+2. Add the enhancement to the target class using the `enhance` decorator.
 
-There are also a few extra features that may be useful for you:
+### Access the target class
 
-### Access the ViewModel
+When instantiating an enhancement, the library sends to a reference of the target class instance to the enhancement constructor, so you can access methods and properties on your custom methods.
 
-When instantiating an enhancement, the library sends to a reference of the ViewModel instance, so you can access methods and properties on your custom methods.
-
-Let's say you have a component that renders a form where the user saves some important information, and if the user were to leave the route without saving the information, you want to use a prompt to ask for confirmation.
+Let's say you have a component that renders a form where the user saves some important information, and if the user were to leave the route without saving the information, you would want to use a prompt to ask for confirmation.
 
 A basic approach would be to have a flag indicating if the changes are saved and then use the `canDeactivate` lifecycle method to decide whether to show the prompt or not:
 
@@ -97,12 +94,12 @@ class FormConfirmation {
 
 It's the same functionality, but it now checks the `isSaved` property form the ViewModel.
 
-In this case it was really easy because the property is a `boolean` and the `if` checks with _falsy_, but we could've check if the property was defined and use a different default, like "if the ViewModel doesn't have the property, the user can always leave without confirmation".
+> In this case it was really easy because the property is a `boolean` and the `if` checks with _falsy_, but we could've check if the property was defined and use a different default, like "if the ViewModel doesn't have the property, the user can always leave without confirmation".
 
 Ok, let's add it to the form:
 
 ```js
-import { enhance } from 'aurelia-hovm';
+import { enhance } from 'aurelia-class-enhancements';
 import { FormConfirmation } from '...';
 
 @enhance(FormConfirmation)
@@ -120,7 +117,7 @@ And that's all, you can now add it to the other four forms using the enhancement
 
 Just like on any other class you use in the Aurelia context, you can use the `@inject` decorator on an enhancement in order to inject dependencies.
 
-Will use the enhancement from the first example and trigger an event before the log messages.
+We'll use the enhancement from the first example and trigger an event before the log messages.
 
 ```js
 import { inject } from 'aurelia-framework';
@@ -143,13 +140,11 @@ class LogStatus {
 }
 ```
 
-Is that simple! Just like a regular component/service.
-
-This the feature that makes this library Aurelia-specific.
+> This is the feature that makes this library Aurelia-specific.
 
 ### Enhance an enhancement
 
-As mentioned above, dependency injection is the only thing that makes this library Aurelia-specific, and it's an "optional feature", which means that you can enhance any kind of class.
+Since the library was made to enhance any kind of class, that means that you could also enhance an enhancement class.
 
 Let's take the example about dependency injection and move the events part to another enhancement:
 
@@ -174,10 +169,10 @@ class PublishStatus {
 export { PublishStatus };
 ```
 
-Now we can create an enhance `LogStatus` with `PublishStatus`:
+Now we can create an enhanced `LogStatus` with `PublishStatus`:
 
 ```js
-import { enhance } from 'aurelia-hovm';
+import { enhance } from 'aurelia-class-enhancements';
 import { PublishStatus } from '...';
 
 @enhance(PublishStatus)
@@ -191,20 +186,20 @@ class LogStatus {
 }
 ```
 
-That was just to prove the point that you can enhance an enhancement, but there are two other (and simpler) ways in which you can achieve the same result:
+That was just to prove the point that you can enhance an enhancement, but there are two other, and simpler, ways in which you can achieve the same result:
 
 #### The decorator as a function
 
 Decorators are just functions, in this case, a function that returns a function:
 
 ```js
-enhance(...Enhancements)(ViewModel): Proxy<ViewModel>
+enhance(...Enhancements)(TargetClass): Proxy<TargetClass>
 ```
 
 So, instead of enhancing `LogStatus` with `PublishStatus`, we can create a new enhancement with both of them:
 
 ```js
-import { enhance } from 'aurelia-hovm';
+import { enhance } from 'aurelia-class-enhancements';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
@@ -213,10 +208,10 @@ export const PublishAndLogStatus = enhance(PublishStatus)(LogStatus);
 
 #### Multiple enhancements at once
 
-The `enhance` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` and the result would be the same:
+The `enhance` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` to the class with want to enhance and the result would be the same:
 
 ```js
-import { enhance } from 'aurelia-hovm';
+import { enhance } from 'aurelia-class-enhancements';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
@@ -247,19 +242,19 @@ class FormConfirmation {
 }
 ```
 
-But on the ViewModel, you want to add some other functionality that also needs to run on the `canDeactivate` but only if the enhanced method returned `false`.
+But on the ViewModel, you want to add some other functionality that also needs to run on the `canDeactivate`, but only if the enhanced method returned `false`.
 
-I didn't want to modify the signature of the enhanced method because, if the method has optional parameters, it would end up being a total mess.
+Modifying the signature of the enhanced method to add an extra parameter wasn't an option, as it could end up messing up methods with optional parameters.
 
-The easiest way to solve this is with the lifecycle method the library uses to send the returned value from the enhanced method.
+The easiest way to solve this was adding a _lifecycle method_ the library will call, if defined, with whatever was returned from the enhanced method.
 
-The method, is called `enhanced[OriginalMethodName]Return` (even if the method name starts with lowercase, the library will make the first letter uppercase) and this is the signature:
+The name of the method is dynamically generated based on the name of the original method: `enhanced[OriginalMethodName]Return` (even if the method name starts with lowercase, the library will make the first letter uppercase).
+
+This is its signature:
 
 ```js
 enhancedCanDeactivateReturn(value, enhancementInstance): void
 ```
-
-If the ViewModel implements it, the library will call it with whatever value the enhanced method returned, and a reference to the enhancement class instance.
 
 ## Development
 

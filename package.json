@@ -1,9 +1,9 @@
 {
-  "name": "aurelia-hovm",
-  "description": "Enhance your Aurelia's view models with high order functionality",
-  "homepage": "https://homer0.github.io/aurelia-hovm/",
+  "name": "aurelia-class-enhancements",
+  "description": "Enhance your Aurelia's classes with high order functionality",
+  "homepage": "https://homer0.github.io/aurelia-class-enhancements/",
   "version": "0.0.1",
-  "repository": "homer0/aurelia-hovm",
+  "repository": "homer0/aurelia-class-enhancements",
   "author": "Leonardo Apiwan (@homer0) <me@homer0.com>",
   "license": "MIT",
   "keywords": [
