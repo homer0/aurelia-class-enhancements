@@ -14,7 +14,7 @@ Here's a really basic example of what you can achieve using this library:
 
 ```js
 // myComponent.js
-import { enhance } from 'aurelia-class-enhancements';
+import enhance from 'aurelia-class-enhancements';
 import LogStatus from './logStatus';
 
 @enhance(LogStatus)
@@ -103,7 +103,7 @@ It's the same functionality, but it now checks the `isSaved` property form the V
 Ok, let's add it to the form:
 
 ```js
-import { enhance } from 'aurelia-class-enhancements';
+import enhance from 'aurelia-class-enhancements';
 import { FormConfirmation } from '...';
 
 @enhance(FormConfirmation)
@@ -176,7 +176,7 @@ export { PublishStatus };
 Now we can create an enhanced `LogStatus` with `PublishStatus`:
 
 ```js
-import { enhance } from 'aurelia-class-enhancements';
+import enhance from 'aurelia-class-enhancements';
 import { PublishStatus } from '...';
 
 @enhance(PublishStatus)
@@ -203,7 +203,7 @@ enhance(...Enhancements)(TargetClass): Proxy<TargetClass>
 So, instead of enhancing `LogStatus` with `PublishStatus`, we can create a new enhancement with both of them:
 
 ```js
-import { enhance } from 'aurelia-class-enhancements';
+import enhance from 'aurelia-class-enhancements';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
@@ -215,7 +215,7 @@ export const PublishAndLogStatus = enhance(PublishStatus)(LogStatus);
 The `enhance` decorator supports multiple enhancements as parameters, so we could just send `LogStatus` and then `PublishStatus` to the class with want to enhance and the result would be the same:
 
 ```js
-import { enhance } from 'aurelia-class-enhancements';
+import enhance from 'aurelia-class-enhancements';
 import { LogStatus } from '...';
 import { PublishStatus } from '...';
 
