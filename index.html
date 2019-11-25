@@ -45,7 +45,7 @@
 </blockquote>
 <p>Here&apos;s a really basic example of what you can achieve using this library:</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">// myComponent.js
-import { enhance } from &apos;aurelia-class-enhancements&apos;;
+import enhance from &apos;aurelia-class-enhancements&apos;;
 import LogStatus from &apos;./logStatus&apos;;
 
 @enhance(LogStatus)
@@ -117,7 +117,7 @@ export { MyForm };</code>
 <p>In this case it was really easy because the property is a <code>boolean</code> and the <code>if</code> checks with <em>falsy</em>, but we could&apos;ve check if the property was defined and use a different default, like &quot;if the ViewModel doesn&apos;t have the property, the user can always leave without confirmation&quot;.</p>
 </blockquote>
 <p>Ok, let&apos;s add it to the form:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import { enhance } from &apos;aurelia-class-enhancements&apos;;
+<pre><code class="lang-js"><code class="source-code prettyprint">import enhance from &apos;aurelia-class-enhancements&apos;;
 import { FormConfirmation } from &apos;...&apos;;
 
 @enhance(FormConfirmation)
@@ -175,7 +175,7 @@ class PublishStatus {
 export { PublishStatus };</code>
 </code></pre>
 <p>Now we can create an enhanced <code>LogStatus</code> with <code>PublishStatus</code>:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import { enhance } from &apos;aurelia-class-enhancements&apos;;
+<pre><code class="lang-js"><code class="source-code prettyprint">import enhance from &apos;aurelia-class-enhancements&apos;;
 import { PublishStatus } from &apos;...&apos;;
 
 @enhance(PublishStatus)
@@ -193,14 +193,14 @@ class LogStatus {
 <pre><code class="lang-js"><code class="source-code prettyprint">enhance(...Enhancements)(TargetClass): Proxy&lt;TargetClass&gt;</code>
 </code></pre>
 <p>So, instead of enhancing <code>LogStatus</code> with <code>PublishStatus</code>, we can create a new enhancement with both of them:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import { enhance } from &apos;aurelia-class-enhancements&apos;;
+<pre><code class="lang-js"><code class="source-code prettyprint">import enhance from &apos;aurelia-class-enhancements&apos;;
 import { LogStatus } from &apos;...&apos;;
 import { PublishStatus } from &apos;...&apos;;
 
 export const PublishAndLogStatus = enhance(PublishStatus)(LogStatus);</code>
 </code></pre>
 <h4 id="multiple-enhancements-at-once">Multiple enhancements at once</h4><p>The <code>enhance</code> decorator supports multiple enhancements as parameters, so we could just send <code>LogStatus</code> and then <code>PublishStatus</code> to the class with want to enhance and the result would be the same:</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">import { enhance } from &apos;aurelia-class-enhancements&apos;;
+<pre><code class="lang-js"><code class="source-code prettyprint">import enhance from &apos;aurelia-class-enhancements&apos;;
 import { LogStatus } from &apos;...&apos;;
 import { PublishStatus } from &apos;...&apos;;
 
