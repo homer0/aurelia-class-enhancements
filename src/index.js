@@ -98,7 +98,7 @@ const getInjectData = (target = [], enhancement = []) => {
  */
 const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
   const enhancedMethod = enhancement[name];
-  const enhancedValue = enhancedMethod(...args);
+  const enhancedValue = enhancedMethod.bind(enhancement)(...args);
   const normalizedName = name.replace(/^[a-z]/, (match) => match.toUpperCase());
   const lcMethodName = `enhanced${normalizedName}Return`;
   const hasLCMethod = typeof target[lcMethodName] === 'function';
@@ -107,17 +107,17 @@ const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
   if (isPromise) {
     result = enhancedValue.then((value) => {
       if (hasLCMethod) {
-        target[lcMethodName](value, enhancement);
+        target[lcMethodName].bind(target)(value, enhancement);
       }
 
       return callTarget ? target[name](...args) : value;
     });
   } else {
     if (hasLCMethod) {
-      target[lcMethodName](enhancedValue, enhancement);
+      target[lcMethodName].bind(target)(enhancedValue, enhancement);
     }
 
-    result = callTarget ? target[name](...args) : enhancedValue;
+    result = callTarget ? target[name].bind(target)(...args) : enhancedValue;
   }
 
   return result;
