@@ -174,6 +174,15 @@ const proxyClass = (Target, Enhancement) => {
         injectData.list :
         target[name]
     ),
+    getOwnPropertyDescriptor: (target, name) => (
+      name === 'inject' ?
+        {
+          configurable: true,
+          enumerable: true,
+          value: injectData.list,
+        } :
+        Object.getOwnPropertyDescriptor(target, name)
+    ),
   });
 };
 /**

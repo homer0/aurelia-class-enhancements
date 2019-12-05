@@ -248,6 +248,7 @@ describe('aurelia-class-enhancements', () => {
       services.depFive,
       services.depSix,
     ];
+    Base.otherStaticProperty = 'something';
     const enhanceConstructor = jest.fn();
     class Enhancement {
       constructor(...args) {
@@ -262,21 +263,38 @@ describe('aurelia-class-enhancements', () => {
     ];
     let Sut = null;
     let dependencies = null;
+    let dependenciesDescription = null;
+    let otherPropertyDescription = null;
     let sut = null;
-    // When
-    Sut = enhance(Enhancement)(Base);
-    dependencies = Sut.inject;
-    sut = new Sut(...dependencies);
-    // Then
-    expect(sut).toBeInstanceOf(Base);
-    expect(dependencies).toEqual([
+    const expectedDependencies = [
       services.depOne,
       services.depThree,
       services.depFive,
       services.depSix,
       services.depTwo,
       services.depFour,
-    ]);
+    ];
+    // When
+    Sut = enhance(Enhancement)(Base);
+    dependencies = Sut.inject;
+    dependenciesDescription = Object.getOwnPropertyDescriptor(Sut, 'inject');
+    otherPropertyDescription = Object.getOwnPropertyDescriptor(Sut, 'otherStaticProperty');
+    sut = new Sut(...dependencies);
+    // Then
+    expect(sut).toBeInstanceOf(Base);
+    expect(dependencies).toEqual(expectedDependencies);
+    expect(dependenciesDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: false,
+      value: expectedDependencies,
+    });
+    expect(otherPropertyDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: Base.otherStaticProperty,
+    });
     expect(baseConstructor).toHaveBeenCalledTimes(1);
     expect(baseConstructor).toHaveBeenCalledWith(
       services.depOne,
