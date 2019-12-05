@@ -312,6 +312,20 @@ describe('aurelia-class-enhancements', () => {
     );
   });
 
+  it('should return the Proxy class when calling an enhanced instance constructor', () => {
+    // Given
+    class Base {}
+    class Enhancement {}
+    let Sut = null;
+    let sut = null;
+    // When
+    Sut = enhance(Enhancement)(Base);
+    sut = new Sut();
+    // Then
+    expect(sut).toBeInstanceOf(Base);
+    expect(sut.constructor).toBe(Sut);
+  });
+
   it('should call a enhanced method even if its not defined on the base', () => {
     // Given
     class Base {}

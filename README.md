@@ -144,8 +144,6 @@ class LogStatus {
 }
 ```
 
-> This is the feature that makes this library Aurelia-specific.
-
 ### Enhance an enhancement
 
 Since the library was made to enhance any kind of class, that means that you could also enhance an enhancement class.

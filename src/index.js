@@ -125,24 +125,30 @@ const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
 /**
  * Creates a proxy for a target class instance so when a method is called, it will check if the
  * enhancement class implements its in order to trigger that one before the original.
+ * @param {Class}  ProxyClass  The definition of the proxy class. This is needed in order to return
+ *                             it when Aurelia asks for the instance constructor.
  * @param {Object} target      The target class instance to proxy.
  * @param {Object} enhancement The instance that will add methods to the target class.
  * @return {Object} A proxied version of the `target`.
  * @ignore
  */
-const enhanceInstance = (target, enhancement) => new Proxy(target, {
+const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
   get: (targetCls, name) => {
     let result;
-    const targetValue = targetCls[name];
-    const targetIsFn = typeof targetValue === 'function';
-    const enhancementValue = enhancement[name];
-    const enhancementIsFn = typeof enhancementValue === 'function';
-    if (targetIsFn && isNativeFn(targetValue)) {
-      result = targetValue;
-    } else if (enhancementIsFn) {
-      result = composeMethod(targetCls, enhancement, name, targetIsFn);
+    if (name === 'constructor') {
+      result = ProxyClass;
     } else {
-      result = targetValue;
+      const targetValue = targetCls[name];
+      const targetIsFn = typeof targetValue === 'function';
+      const enhancementValue = enhancement[name];
+      const enhancementIsFn = typeof enhancementValue === 'function';
+      if (targetIsFn && isNativeFn(targetValue)) {
+        result = targetValue;
+      } else if (enhancementIsFn) {
+        result = composeMethod(targetCls, enhancement, name, targetIsFn);
+      } else {
+        result = targetValue;
+      }
     }
 
     return result;
@@ -159,7 +165,7 @@ const enhanceInstance = (target, enhancement) => new Proxy(target, {
  */
 const proxyClass = (Target, Enhancement) => {
   const injectData = getInjectData(Target.inject, Enhancement.inject);
-  return new Proxy(Target, {
+  const ProxyClass = new Proxy(Target, {
     construct: (TargetCls, args) => {
       const targetInstance = new TargetCls(...injectData.getForTarget(args));
       const enhancementInstance = new Enhancement(
@@ -167,7 +173,7 @@ const proxyClass = (Target, Enhancement) => {
         ...injectData.getForEnhancement(args)
       );
 
-      return enhanceInstance(targetInstance, enhancementInstance);
+      return enhanceInstance(ProxyClass, targetInstance, enhancementInstance);
     },
     get: (target, name) => (
       name === 'inject' ?
@@ -184,6 +190,8 @@ const proxyClass = (Target, Enhancement) => {
         Object.getOwnPropertyDescriptor(target, name)
     ),
   });
+
+  return ProxyClass;
 };
 /**
  * Creates a function to enhance an Aurelia's class with other class(es).
