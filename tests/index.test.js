@@ -469,4 +469,31 @@ describe('aurelia-class-enhancements', () => {
       value: enhancedPropertyValue,
     });
   });
+
+  it('should have merge both keys, from the target and the enhancement, for Object.keys', () => {
+    // Given
+    const baseProperty = 'baseId';
+    const enhancedProperty = 'id';
+    class Base {
+      constructor() {
+        this[baseProperty] = null;
+        this[enhancedProperty] = null;
+      }
+    }
+    class Enhancement {
+      constructor() {
+        this[enhancedProperty] = null;
+      }
+    }
+    let sut = null;
+    let result = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    result = Object.keys(sut);
+    // Then
+    expect(result).toEqual([
+      baseProperty,
+      enhancedProperty,
+    ]);
+  });
 });

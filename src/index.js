@@ -165,6 +165,10 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
 
     return result;
   },
+  ownKeys: (targetCls) => [...new Set([
+    ...Reflect.ownKeys(targetCls),
+    ...Reflect.ownKeys(enhancement),
+  ])],
 });
 /**
  * Creates a proxy from a target class declaration in order to:
