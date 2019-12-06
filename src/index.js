@@ -157,6 +157,14 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
     name in targetCls ||
     name in enhancement
   ),
+  getOwnPropertyDescriptor: (targetCls, name) => {
+    let result = Object.getOwnPropertyDescriptor(enhancement, name);
+    if (typeof result === 'undefined') {
+      result = Object.getOwnPropertyDescriptor(targetCls, name);
+    }
+
+    return result;
+  },
 });
 /**
  * Creates a proxy from a target class declaration in order to:

@@ -429,4 +429,44 @@ describe('aurelia-class-enhancements', () => {
     // Then
     expect(result).toBe(Base.staticProp);
   });
+
+  it('should have descriptions for both, the enhancement and the target, properties', () => {
+    // Given
+    const baseProperty = 'baseId';
+    const basePropertyValue = 'base';
+    const enhancedProperty = 'id';
+    const enhancedPropertyBaseValue = 'base';
+    class Base {
+      constructor() {
+        this[baseProperty] = basePropertyValue;
+        this[enhancedProperty] = enhancedPropertyBaseValue;
+      }
+    }
+    const enhancedPropertyValue = 'enhanced';
+    class Enhancement {
+      constructor() {
+        this[enhancedProperty] = enhancedPropertyValue;
+      }
+    }
+    let sut = null;
+    let basePropertyDescription = null;
+    let enhancedPropertyDescription = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    basePropertyDescription = Object.getOwnPropertyDescriptor(sut, baseProperty);
+    enhancedPropertyDescription = Object.getOwnPropertyDescriptor(sut, enhancedProperty);
+    // Then
+    expect(basePropertyDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: basePropertyValue,
+    });
+    expect(enhancedPropertyDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: enhancedPropertyValue,
+    });
+  });
 });
