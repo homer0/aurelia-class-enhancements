@@ -342,6 +342,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
+    expect('attached' in sut).toBeTrue();
     expect(enhanceAttached).toHaveBeenCalledTimes(1);
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
@@ -384,6 +385,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
+    expect('attached' in sut).toBeTrue();
     expect(baseAttached).toHaveBeenCalledTimes(1);
     expect(baseAttached).toHaveBeenCalledWith(arg);
   });
@@ -426,5 +428,72 @@ describe('aurelia-class-enhancements', () => {
     result = Sut.staticProp;
     // Then
     expect(result).toBe(Base.staticProp);
+  });
+
+  it('should have descriptions for both, the enhancement and the target, properties', () => {
+    // Given
+    const baseProperty = 'baseId';
+    const basePropertyValue = 'base';
+    const enhancedProperty = 'id';
+    const enhancedPropertyBaseValue = 'base';
+    class Base {
+      constructor() {
+        this[baseProperty] = basePropertyValue;
+        this[enhancedProperty] = enhancedPropertyBaseValue;
+      }
+    }
+    const enhancedPropertyValue = 'enhanced';
+    class Enhancement {
+      constructor() {
+        this[enhancedProperty] = enhancedPropertyValue;
+      }
+    }
+    let sut = null;
+    let basePropertyDescription = null;
+    let enhancedPropertyDescription = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    basePropertyDescription = Object.getOwnPropertyDescriptor(sut, baseProperty);
+    enhancedPropertyDescription = Object.getOwnPropertyDescriptor(sut, enhancedProperty);
+    // Then
+    expect(basePropertyDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: basePropertyValue,
+    });
+    expect(enhancedPropertyDescription).toEqual({
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: enhancedPropertyValue,
+    });
+  });
+
+  it('should have merge both keys, from the target and the enhancement, for Object.keys', () => {
+    // Given
+    const baseProperty = 'baseId';
+    const enhancedProperty = 'id';
+    class Base {
+      constructor() {
+        this[baseProperty] = null;
+        this[enhancedProperty] = null;
+      }
+    }
+    class Enhancement {
+      constructor() {
+        this[enhancedProperty] = null;
+      }
+    }
+    let sut = null;
+    let result = null;
+    // When
+    sut = new (enhance(Enhancement)(Base))();
+    result = Object.keys(sut);
+    // Then
+    expect(result).toEqual([
+      baseProperty,
+      enhancedProperty,
+    ]);
   });
 });
