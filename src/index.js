@@ -153,6 +153,10 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
 
     return result;
   },
+  has: (targetCls, name) => (
+    name in targetCls ||
+    name in enhancement
+  ),
 });
 /**
  * Creates a proxy from a target class declaration in order to:

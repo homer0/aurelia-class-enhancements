@@ -342,6 +342,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
+    expect('attached' in sut).toBeTrue();
     expect(enhanceAttached).toHaveBeenCalledTimes(1);
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
@@ -384,6 +385,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
+    expect('attached' in sut).toBeTrue();
     expect(baseAttached).toHaveBeenCalledTimes(1);
     expect(baseAttached).toHaveBeenCalledWith(arg);
   });
