@@ -186,7 +186,7 @@ const proxyClass = (Target, Enhancement) => {
       const targetInstance = new TargetCls(...injectData.getForTarget(args));
       const enhancementInstance = new Enhancement(
         targetInstance,
-        ...injectData.getForEnhancement(args)
+        ...injectData.getForEnhancement(args),
       );
 
       return enhanceInstance(ProxyClass, targetInstance, enhancementInstance);
@@ -224,7 +224,7 @@ const proxyClass = (Target, Enhancement) => {
  */
 const enhance = (...enhancements) => (Target) => enhancements.reduce(
   (Current, Enhancement) => proxyClass(Current, Enhancement),
-  Target
+  Target,
 );
 
 module.exports = enhance;
