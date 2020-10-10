@@ -1,24 +1,38 @@
 /**
- * @external {Class} https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+ * @external Class
+ * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
  */
 
 /**
- * @typedef {function} EnhancementCreator
+ * @callback EnhancementCreator
  * @param {Class} Target The class to enhance.
- * @return {Proxy<Class>} A proxied version of the `Target`.
+ * @returns {Proxy<Class>} A proxied version of the `Target`.
  */
 
 /**
- * @typedef {function} GetDependencies
+ * @callback GetDependencies
  * @param {Array} list All the dependencies Aurelia returned, for both the target class and the
  *                     enhancement class.
- * @return {Array} A list of dependencies for the requested case, be the target class or the
- *                 enhancement class.
+ * @returns {Array} A list of dependencies for the requested case, be the target class or the
+ *                  enhancement class.
  * @ignore
  */
 
 /**
+ * @typedef {Object} InjectData
+ * @property {Array}           list              The unique list of all the dependencies both
+ *                                               classes need.
+ * @property {GetDependencies} getForTarget      Given the list of all the obtained dependencies,
+ *                                               it filters the ones needed for the target
+ *                                               class.
+ * @property {GetDependencies} getForEnhancement Given the list of all the obtained dependencies,
+ *                                               it filters the ones needed for the enhancement
+ *                                               class.
+ */
+
+/**
  * These are necessary resources for the `isNativeFn` function.
+ *
  * @ignore
  */
 const { toString } = Object.prototype;
@@ -38,8 +52,9 @@ const reBase = String(toString)
 const reNative = RegExp(`^${reBase}$`);
 /**
  * Checks whether a function is native or not.
- * @param {function} fn The function to validate.
- * @return {Boolean}
+ *
+ * @param {Function} fn The function to validate.
+ * @returns {boolean}
  * @see https://davidwalsh.name/detect-native-function
  * @ignore
  */
@@ -48,17 +63,10 @@ const isNativeFn = (fn) => fnToString.call(fn).match(reNative);
  * This utility function takes care of generating a unique list of dependencies for both, the
  * target and the class that enhances it. It then provides methods to extract the dependencies
  * of each one when Aurelia is done instantiating them.
+ *
  * @param {Array} [target=[]]      The list of dependencies for the target class.
  * @param {Array} [enhancement=[]] The list of dependencies for the enhance class.
- * @return {Object}
- * @property {Array}           list              The unique list of all the dependencies both
- *                                               classes need.
- * @property {GetDependencies} getForTarget      Given the list of all the obtained dependencies,
- *                                               it filters the ones needed for the target
- *                                               class.
- * @property {GetDependencies} getForEnhancement Given the list of all the obtained dependencies,
- *                                               it filters the ones needed for the enhancement
- *                                               class.
+ * @returns {InjectData}
  * @ignore
  */
 const getInjectData = (target = [], enhancement = []) => {
@@ -76,7 +84,19 @@ const getInjectData = (target = [], enhancement = []) => {
 
   return {
     list,
+    /**
+     * Given the list of all the obtained dependencies, it filters the ones needed for the target
+     * class.
+     *
+     * @type {GetDependencies}
+     */
     getForTarget: (values) => values.slice(0, target.length),
+    /**
+     * Given the list of all the obtained dependencies, it filters the ones needed for the
+     * enhancement class.
+     *
+     * @type {GetDependencies}
+     */
     getForEnhancement: (values) => enhancement.map((dep) => (
       values[enhancementPositions[dep]]
     )),
@@ -89,11 +109,12 @@ const getInjectData = (target = [], enhancement = []) => {
  * a promise (becuase the method returned a `Promise`) or sync, check if the target implements
  * the lifecycle method to recive what the enhancement returned and finally, call the original
  * method.
+ *
  * @param {Object}  target      The target class instance.
  * @param {Object}  enhancement The instance with the enhanced methods.
- * @param {String}  name        The name of the method being requested.
- * @param {Boolean} callTarget  Whether or not the target method should be called.
- * @return {Function} A version of the method that calls both, the enhancement and the original.
+ * @param {string}  name        The name of the method being requested.
+ * @param {boolean} callTarget  Whether or not the target method should be called.
+ * @returns {Function} A version of the method that calls both, the enhancement and the original.
  * @ignore
  */
 const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
@@ -125,14 +146,26 @@ const composeMethod = (target, enhancement, name, callTarget) => (...args) => {
 /**
  * Creates a proxy for a target class instance so when a method is called, it will check if the
  * enhancement class implements its in order to trigger that one before the original.
+ *
  * @param {Class}  ProxyClass  The definition of the proxy class. This is needed in order to return
  *                             it when Aurelia asks for the instance constructor.
  * @param {Object} target      The target class instance to proxy.
  * @param {Object} enhancement The instance that will add methods to the target class.
- * @return {Object} A proxied version of the `target`.
+ * @returns {Object} A proxied version of the `target`.
  * @ignore
  */
 const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
+  /**
+   * This a proxy trap for when the implementation tries to access a property of the proxy.
+   * It validates if its the constructor, in order to return the `ProxyClass`, then validates if
+   * it's a native method, then if it's present on the enhancement, and finally on the target
+   * class.
+   *
+   * @param {Object} targetCls The original class.
+   * @param {string} name      The name of the property.
+   * @returns {*}
+   * @ignore
+   */
   get: (targetCls, name) => {
     let result;
     if (name === 'constructor') {
@@ -153,10 +186,28 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
 
     return result;
   },
+  /**
+   * This is a proxy trap for when `in` is called, it validates first on the original class and
+   * then on the enhancement.
+   *
+   * @param {Object} targetCls The original class.
+   * @param {string} name      The name of the property.
+   * @returns {boolean}
+   * @ignore
+   */
   has: (targetCls, name) => (
     name in targetCls ||
     name in enhancement
   ),
+  /**
+   * This is a proxy trap for `getOwnPropertyDescriptor`, it first validates against the
+   * enhancement and then does a fallback to the original class.
+   *
+   * @param {Object} targetCls The original class.
+   * @param {string} name      The name of the property.
+   * @returns {Object}
+   * @ignore
+   */
   getOwnPropertyDescriptor: (targetCls, name) => {
     let result = Object.getOwnPropertyDescriptor(enhancement, name);
     if (typeof result === 'undefined') {
@@ -165,6 +216,14 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
 
     return result;
   },
+  /**
+   * This is a proxy trap for the `Object.keys` function. It gets the keys from the original
+   * class and then from the enhancement.
+   *
+   * @param {Object} targetCls The original class.
+   * @returns {string[]}
+   * @ignore
+   */
   ownKeys: (targetCls) => [...new Set([
     ...Reflect.ownKeys(targetCls),
     ...Reflect.ownKeys(enhancement),
@@ -174,28 +233,58 @@ const enhanceInstance = (ProxyClass, target, enhancement) => new Proxy(target, {
  * Creates a proxy from a target class declaration in order to:
  * 1. Concatenate the list of dependencies both classes need.
  * 2. Instance both the target and the enhancement classes, sending the right dependencies.
+ *
  * @param {Class} Target      The target class to proxy.
  * @param {Class} Enhancement The class that will add methods to the target.
- * @return {Class} A proxied version of the `Target`.
+ * @returns {Class} A proxied version of the `Target`.
  * @ignore
  */
 const proxyClass = (Target, Enhancement) => {
   const injectData = getInjectData(Target.inject, Enhancement.inject);
   const ProxyClass = new Proxy(Target, {
+    /**
+     * This is a proxy trap for the constructor; it instantiates the original class, then the
+     * enhacement, creates a proxy with both together, and returns the proxy.
+     *
+     * @param {T} TargetCls  The original class.
+     * @param {Array} args       The arguments sent to the constructor.
+     * @returns {Proxy<T>}
+     * @template T
+     * @ignore
+     */
     construct: (TargetCls, args) => {
       const targetInstance = new TargetCls(...injectData.getForTarget(args));
       const enhancementInstance = new Enhancement(
         targetInstance,
-        ...injectData.getForEnhancement(args)
+        ...injectData.getForEnhancement(args),
       );
 
       return enhanceInstance(ProxyClass, targetInstance, enhancementInstance);
     },
+    /**
+     * This a proxy trap for when the implementation tries to access a property of the proxy.
+     * It checks if the property is `inject` in order to return the list of dependencies for
+     * both classes (original and enhancement).
+     *
+     * @param {Object} target The original class.
+     * @param {string} name   The name of the property.
+     * @returns {*}
+     * @ignore
+     */
     get: (target, name) => (
       name === 'inject' ?
         injectData.list :
         target[name]
     ),
+    /**
+     * This is a proxy trap for `getOwnPropertyDescriptor`, it's used to validate if the property
+     * to access is the list of dependencies.
+     *
+     * @param {Object} target The original class.
+     * @param {string} name   The name of the property.
+     * @returns {Object}
+     * @ignore
+     */
     getOwnPropertyDescriptor: (target, name) => (
       name === 'inject' ?
         {
@@ -212,19 +301,22 @@ const proxyClass = (Target, Enhancement) => {
 /**
  * Creates a function to enhance an Aurelia's class with other class(es).
  * This method has this sintax because is intended to be used as a decorator.
+ *
  * @example
  * <caption>As decorator</caption>
  * \@enhance(MyEnhancement)
  * class MyViewModel { ... }
+ *
  * @example
  * <caption>As function:</caption>
  * enhance(MyEnhancement)(MyViewModel)
+ *
  * @param {...Class} enhancements The class or list of classes to enhance the target.
- * @return {EnhancementCreator}
+ * @returns {EnhancementCreator}
  */
 const enhance = (...enhancements) => (Target) => enhancements.reduce(
   (Current, Enhancement) => proxyClass(Current, Enhancement),
-  Target
+  Target,
 );
 
 module.exports = enhance;
