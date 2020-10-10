@@ -15,7 +15,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "coveralls": "^3.1.0",
+    "cjs2esm": "^1.1.0",
     "docdash": "homer0/docdash#semver:^2.1.0",
     "eslint": "^7.11.0",
     "eslint-plugin-homer0": "^5.0.2",
@@ -36,7 +36,8 @@
     "lint": "./utils/scripts/lint",
     "lint:all": "./utils/scripts/lint-all",
     "docs": "./utils/scripts/docs",
-    "todo": "./utils/scripts/todo"
+    "todo": "./utils/scripts/todo",
+    "prepublishOnly": "./utils/scripts/prepublishOnly"
   },
   "husky": {
     "hooks": {
