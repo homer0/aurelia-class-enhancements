@@ -28,6 +28,7 @@
     "jest-cli": "^26.5.2",
     "jsdoc": "^3.6.6",
     "leasot": "^11.3.0",
+    "lint-staged": "^10.4.0",
     "wootils": "^4.2.0"
   },
   "engine-strict": true,
@@ -47,5 +48,8 @@
       "pre-commit": "./utils/hooks/pre-commit",
       "post-merge": "./utils/hooks/post-merge"
     }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
   }
 }
