@@ -28,6 +28,7 @@
  * @property {GetDependencies} getForEnhancement Given the list of all the obtained dependencies,
  *                                               it filters the ones needed for the enhancement
  *                                               class.
+ * @ignore
  */
 
 /**
@@ -89,6 +90,7 @@ const getInjectData = (target = [], enhancement = []) => {
      * class.
      *
      * @type {GetDependencies}
+     * @ignore
      */
     getForTarget: (values) => values.slice(0, target.length),
     /**
@@ -96,6 +98,7 @@ const getInjectData = (target = [], enhancement = []) => {
      * enhancement class.
      *
      * @type {GetDependencies}
+     * @ignore
      */
     getForEnhancement: (values) => enhancement.map((dep) => (
       values[enhancementPositions[dep]]
