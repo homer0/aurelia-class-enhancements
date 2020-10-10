@@ -300,7 +300,7 @@ describe('aurelia-class-enhancements', () => {
       services.depOne,
       services.depThree,
       services.depFive,
-      services.depSix
+      services.depSix,
     );
     expect(enhanceConstructor).toHaveBeenCalledTimes(1);
     expect(enhanceConstructor).toHaveBeenCalledWith(
@@ -308,7 +308,7 @@ describe('aurelia-class-enhancements', () => {
       services.depOne,
       services.depTwo,
       services.depFour,
-      services.depFive
+      services.depFive,
     );
   });
 
@@ -342,7 +342,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
-    expect('attached' in sut).toBeTrue();
+    expect('attached' in sut).toBe(true);
     expect(enhanceAttached).toHaveBeenCalledTimes(1);
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
@@ -385,7 +385,7 @@ describe('aurelia-class-enhancements', () => {
     sut.attached(arg);
     // Then
     expect(sut).toBeInstanceOf(Base);
-    expect('attached' in sut).toBeTrue();
+    expect('attached' in sut).toBe(true);
     expect(baseAttached).toHaveBeenCalledTimes(1);
     expect(baseAttached).toHaveBeenCalledWith(arg);
   });

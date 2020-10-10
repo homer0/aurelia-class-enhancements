@@ -4,5 +4,8 @@
   "extends": ["plugin:homer0/jest"],
   "globals": {
     "setTimeout": true
+  },
+  "rules": {
+    "max-classes-per-file": "off"
   }
 }
