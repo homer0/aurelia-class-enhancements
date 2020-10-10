@@ -15,20 +15,15 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "@babel/preset-env": "7.11.5",
-    "@babel/core": "7.11.6",
-    "@babel/plugin-transform-runtime": "7.11.5",
     "coveralls": "^3.1.0",
-    "esdoc": "^1.1.0",
-    "esdoc-standard-plugin": "^1.0.0",
-    "esdoc-node": "1.0.4",
+    "docdash": "homer0/docdash#semver:^2.1.0",
     "eslint": "^7.11.0",
     "eslint-plugin-homer0": "^5.0.2",
     "husky": "^4.3.0",
-    "jasmine-expect": "^5.0.0",
-    "jest-ex": "^9.0.0",
-    "jest-cli": "^26.5.2",
+    "jest": "^26.4.2",
+    "jsdoc": "^3.6.6",
     "leasot": "^11.3.0",
+    "lint-staged": "^10.4.0",
     "wootils": "^4.2.0"
   },
   "engine-strict": true,
@@ -48,5 +43,8 @@
       "pre-commit": "./utils/hooks/pre-commit",
       "post-merge": "./utils/hooks/post-merge"
     }
+  },
+  "lint-staged": {
+    "*.js": "eslint"
   }
 }
