@@ -1,6 +1,6 @@
 # aurelia-class-enhancements
 
-[![Travis](https://img.shields.io/travis/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://travis-ci.org/homer0/aurelia-class-enhancements)
+[![GitHub Workflow Status (master)](https://img.shields.io/github/workflow/status/homer0/aurelia-class-enhancements/Test/master?style=flat-square)](https://github.com/homer0/aurelia-class-enhancements/actions?query=workflow%3ATest)
 [![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=master)
 [![David](https://img.shields.io/david/dev/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://david-dm.org/homer0/aurelia-class-enhancements)
 
@@ -258,6 +258,22 @@ This is its signature:
 enhancedCanDeactivateReturn(value, enhancementInstance): void
 ```
 
+## ES Modules
+
+All files are written using commonjs, as I targeted the oldest Node LTS, and it doesn't support modules (without a flag) yet, but you can still use it with ESM.
+
+When the package gets published, an ESM version is generated on the path `/esm`. If you are using the latest version of Node, or a module bundler (like [projext](https://projextjs.com) :D), instead of requiring from the package's root path, you should do it from the `/esm` sub path:
+
+```js
+// commonjs
+const enhance = require('aurelia-class-enhancements');
+
+// ESM
+import enhance from 'aurelia-class-enhancements/esm';
+```
+
+Since the next LTS to become "the oldest" is 12, which still uses the flag, I still have no plans on going with ESM by default.
+
 ## Development
 
 ### NPM/Yarn tasks
@@ -274,9 +290,17 @@ enhancedCanDeactivateReturn(value, enhancementInstance): void
 
 I use [husky](https://yarnpkg.com/en/package/husky) to automatically install the repository hooks so the code will be tested and linted before any commit and the dependencies updated after every merge. The configuration is on the `husky` property of the `package.json` and the hooks' files are on `./utils/hooks`.
 
+#### Commits convention
+
+I use [conventional commits](https://www.conventionalcommits.org) with [`commitizen`](https://yarnpkg.com/package/commitizen) in order to support semantic releases. The one that sets it up is actually husky, it installs a script that runs commitizen on the `git commit` command.
+
+The hook for this is on `./utils/hooks/prepare-commit-msg` and the configuration for comitizen is on the `config.commitizen` property of the `package.json`.
+
 ### Testing
 
-I use [Jest](https://facebook.github.io/jest/) with [Jest-Ex](https://yarnpkg.com/en/package/jest-ex) to test the project. The configuration file is on `./.jestrc.json`, the tests are on `./tests` and the script that runs it is on `./utils/scripts/test`.
+I use [Jest](https://facebook.github.io/jest/) to test the project.
+
+The configuration file is on `./.jestrc.js`, the tests are on `./tests` and the script that runs it is on `./utils/scripts/test`.
 
 ### Linting
 
@@ -284,7 +308,9 @@ I use [ESlint](http://eslint.org) with [my own custom configuration](http://yarn
 
 ### Documentation
 
-I use [ESDoc](http://esdoc.org) to generate HTML documentation for the project. The configuration file is on `./.esdoc.json` and the script that runs it is on `./utils/scripts/docs`.
+I use [JSDoc](https://jsdoc.app) to generate an HTML documentation site for the project.
+
+The configuration file is on `./.jsdoc.js` and the script that runs it is on `./utils/scripts/docs`.
 
 ### To-Dos
 
