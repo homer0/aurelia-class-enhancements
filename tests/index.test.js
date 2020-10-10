@@ -1,7 +1,5 @@
-jest.unmock('/src/index');
-
-require('jasmine-expect');
-const enhance = require('/src/index');
+jest.unmock('../src/index');
+const enhance = require('../src/index');
 
 describe('aurelia-class-enhancements', () => {
   const delayExec = (fn) => new Promise((resolve) => {
@@ -135,7 +133,7 @@ describe('aurelia-class-enhancements', () => {
     ]);
   });
 
-  it('should enhance a view model and call the methods from the enhancements (promise)', () => {
+  it('should enhance a view model and call the methods from the enhancements (async)', async () => {
     // Given
     const callQueue = [];
     const baseId = 'base-vm';
@@ -172,24 +170,22 @@ describe('aurelia-class-enhancements', () => {
     let sut = null;
     // When
     sut = new (enhance(EnhancementOne, EnhancementTwo)(Base))();
-    return sut.attached(arg)
-    .then(() => {
-      // Then
-      expect(callQueue).toEqual([
-        enhTwoId,
-        enhOneId,
-        baseId,
-      ]);
-      expect(enhTwoAttached).toHaveBeenCalledTimes(1);
-      expect(enhTwoAttached).toHaveBeenCalledWith(arg);
-      expect(enhOneAttached).toHaveBeenCalledTimes(1);
-      expect(enhOneAttached).toHaveBeenCalledWith(arg);
-      expect(baseAttached).toHaveBeenCalledTimes(1);
-      expect(baseAttached).toHaveBeenCalledWith(arg);
-    });
+    await sut.attached(arg);
+    // Then
+    expect(callQueue).toEqual([
+      enhTwoId,
+      enhOneId,
+      baseId,
+    ]);
+    expect(enhTwoAttached).toHaveBeenCalledTimes(1);
+    expect(enhTwoAttached).toHaveBeenCalledWith(arg);
+    expect(enhOneAttached).toHaveBeenCalledTimes(1);
+    expect(enhOneAttached).toHaveBeenCalledWith(arg);
+    expect(baseAttached).toHaveBeenCalledTimes(1);
+    expect(baseAttached).toHaveBeenCalledWith(arg);
   });
 
-  it('should recive the "enhanced returns" on a lifecycle method (promise)', () => {
+  it('should recive the "enhanced returns" on a lifecycle method (async)', async () => {
     // Given
     const baseId = 'base-vm';
     const baseAttached = jest.fn(() => baseId);
@@ -212,18 +208,18 @@ describe('aurelia-class-enhancements', () => {
     }
     const arg = 'hello world!';
     let sut = null;
+    let result = null;
     // When
     sut = new (enhance(Enhancement)(Base))();
-    return sut.attached(arg).then((result) => {
-      // Then
-      expect(result).toBe(baseId);
-      expect(enhAttached).toHaveBeenCalledTimes(1);
-      expect(enhAttached).toHaveBeenCalledWith(arg);
-      expect(baseAttached).toHaveBeenCalledTimes(1);
-      expect(baseAttached).toHaveBeenCalledWith(arg);
-      expect(baseAttachedLifeCycle).toHaveBeenCalledTimes(1);
-      expect(baseAttachedLifeCycle).toHaveBeenCalledWith(enhId, expect.any(Enhancement));
-    });
+    result = await sut.attached(arg);
+    // Then
+    expect(result).toBe(baseId);
+    expect(enhAttached).toHaveBeenCalledTimes(1);
+    expect(enhAttached).toHaveBeenCalledWith(arg);
+    expect(baseAttached).toHaveBeenCalledTimes(1);
+    expect(baseAttached).toHaveBeenCalledWith(arg);
+    expect(baseAttachedLifeCycle).toHaveBeenCalledTimes(1);
+    expect(baseAttachedLifeCycle).toHaveBeenCalledWith(enhId, expect.any(Enhancement));
   });
 
   it('should enhance a view model and merge the enhancements dependencies', () => {
@@ -347,7 +343,7 @@ describe('aurelia-class-enhancements', () => {
     expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
 
-  it('should call a enhanced method even if its not defined on the base (promise)', () => {
+  it('should call a enhanced method even if its not defined on the base (async)', async () => {
     // Given
     class Base {}
     const enhanceAttached = jest.fn();
@@ -360,13 +356,11 @@ describe('aurelia-class-enhancements', () => {
     let sut = null;
     // When
     sut = new (enhance(Enhancement)(Base))();
-    return sut.attached(arg)
-    .then(() => {
-      // Then
-      expect(sut).toBeInstanceOf(Base);
-      expect(enhanceAttached).toHaveBeenCalledTimes(1);
-      expect(enhanceAttached).toHaveBeenCalledWith(arg);
-    });
+    await sut.attached(arg);
+    // Then
+    expect(sut).toBeInstanceOf(Base);
+    expect(enhanceAttached).toHaveBeenCalledTimes(1);
+    expect(enhanceAttached).toHaveBeenCalledWith(arg);
   });
 
   it('should call a base method even if its not defined on the enhancement', () => {
