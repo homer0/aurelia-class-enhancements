@@ -16,6 +16,8 @@
   "dependencies": {},
   "devDependencies": {
     "cjs2esm": "^1.1.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
     "docdash": "homer0/docdash#semver:^2.1.0",
     "eslint": "^7.11.0",
     "eslint-plugin-homer0": "^5.0.2",
@@ -42,10 +44,16 @@
   "husky": {
     "hooks": {
       "pre-commit": "./utils/hooks/pre-commit",
-      "post-merge": "./utils/hooks/post-merge"
+      "post-merge": "./utils/hooks/post-merge",
+      "prepare-commit-msg": "./utils/hooks/prepare-commit-msg"
     }
   },
   "lint-staged": {
     "*.js": "eslint"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
