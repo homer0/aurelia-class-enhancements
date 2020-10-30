@@ -296,6 +296,12 @@ I use [conventional commits](https://www.conventionalcommits.org) with [`commiti
 
 The hook for this is on `./utils/hooks/prepare-commit-msg` and the configuration for comitizen is on the `config.commitizen` property of the `package.json`.
 
+### Releases
+
+I use [`semantic-release`](https://yarnpkg.com/package/semantic-release) and a GitHub action to automatically release on NPM everything that gets merged to master.
+
+The configuration for `semantic-release` is on `./releaserc` and the workflow for the release is on `./.github/workflow/release.yml`.
+
 ### Testing
 
 I use [Jest](https://facebook.github.io/jest/) to test the project.
