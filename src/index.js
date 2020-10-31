@@ -252,7 +252,7 @@ const proxyClass = (Target, Enhancement) => {
      * @param {T} TargetCls  The original class.
      * @param {Array} args       The arguments sent to the constructor.
      * @returns {Proxy<T>}
-     * @template T
+     * @template T The type of the class to proxy.
      * @ignore
      */
     construct: (TargetCls, args) => {
