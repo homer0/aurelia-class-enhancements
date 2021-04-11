@@ -1,7 +1,7 @@
 # aurelia-class-enhancements
 
-[![GitHub Workflow Status (master)](https://img.shields.io/github/workflow/status/homer0/aurelia-class-enhancements/Test/master?style=flat-square)](https://github.com/homer0/aurelia-class-enhancements/actions?query=workflow%3ATest)
-[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=master)
+[![GitHub Workflow Status (main)](https://img.shields.io/github/workflow/status/homer0/aurelia-class-enhancements/Test/main?style=flat-square)](https://github.com/homer0/aurelia-class-enhancements/actions?query=workflow%3ATest)
+[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=main)
 [![David](https://img.shields.io/david/dev/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://david-dm.org/homer0/aurelia-class-enhancements)
 
 Enhance your Aurelia's classes with high order functionality
@@ -288,7 +288,11 @@ Since the next LTS to become "the oldest" is 12, which still uses the flag, I st
 
 ### Repository hooks
 
-I use [husky](https://yarnpkg.com/en/package/husky) to automatically install the repository hooks so the code will be tested and linted before any commit and the dependencies updated after every merge. The configuration is on the `husky` property of the `package.json` and the hooks' files are on `./utils/hooks`.
+I use [`husky`](https://yarnpkg.com/package/husky) to automatically install the repository hooks so...
+
+1. The code will be formatted and linted before any commit.
+2. The dependencies will be updated after every merge.
+3. The tests will run before pushing.
 
 #### Commits convention
 
@@ -298,7 +302,7 @@ The hook for this is on `./utils/hooks/prepare-commit-msg` and the configuration
 
 ### Releases
 
-I use [`semantic-release`](https://yarnpkg.com/package/semantic-release) and a GitHub action to automatically release on NPM everything that gets merged to master.
+I use [`semantic-release`](https://yarnpkg.com/package/semantic-release) and a GitHub action to automatically release on NPM everything that gets merged to main.
 
 The configuration for `semantic-release` is on `./releaserc` and the workflow for the release is on `./.github/workflow/release.yml`.
 
