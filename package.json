@@ -23,7 +23,8 @@
     "docdash": "homer0/docdash#semver:^2.1.0",
     "eslint": "^7.24.0",
     "eslint-plugin-homer0": "^5.0.3",
-    "husky": "^4.3.0",
+    "husky": "^6.0.0",
+    "is-ci": "^3.0.0",
     "jest": "^26.6.3",
     "jsdoc": "^3.6.6",
     "leasot": "^12.0.0",
@@ -42,14 +43,8 @@
     "lint:all": "./utils/scripts/lint-all",
     "docs": "./utils/scripts/docs",
     "todo": "./utils/scripts/todo",
-    "prepublishOnly": "./utils/scripts/prepublishOnly"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./utils/hooks/pre-commit",
-      "post-merge": "./utils/hooks/post-merge",
-      "prepare-commit-msg": "./utils/hooks/prepare-commit-msg"
-    }
+    "prepublishOnly": "./utils/scripts/prepublishOnly",
+    "prepare": "./utils/scripts/prepare"
   },
   "lint-staged": {
     "*.js": "eslint"
