@@ -1,7 +1,7 @@
 # aurelia-class-enhancements
 
-[![GitHub Workflow Status (master)](https://img.shields.io/github/workflow/status/homer0/aurelia-class-enhancements/Test/master?style=flat-square)](https://github.com/homer0/aurelia-class-enhancements/actions?query=workflow%3ATest)
-[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=master)
+[![GitHub Workflow Status (main)](https://img.shields.io/github/workflow/status/homer0/aurelia-class-enhancements/Test/main?style=flat-square)](https://github.com/homer0/aurelia-class-enhancements/actions?query=workflow%3ATest)
+[![Coveralls github](https://img.shields.io/coveralls/github/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://coveralls.io/github/homer0/aurelia-class-enhancements?branch=main)
 [![David](https://img.shields.io/david/dev/homer0/aurelia-class-enhancements.svg?style=flat-square)](https://david-dm.org/homer0/aurelia-class-enhancements)
 
 Enhance your Aurelia's classes with high order functionality
@@ -302,7 +302,7 @@ The hook for this is on `./utils/hooks/prepare-commit-msg` and the configuration
 
 ### Releases
 
-I use [`semantic-release`](https://yarnpkg.com/package/semantic-release) and a GitHub action to automatically release on NPM everything that gets merged to master.
+I use [`semantic-release`](https://yarnpkg.com/package/semantic-release) and a GitHub action to automatically release on NPM everything that gets merged to main.
 
 The configuration for `semantic-release` is on `./releaserc` and the workflow for the release is on `./.github/workflow/release.yml`.
 
