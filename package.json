@@ -50,7 +50,10 @@
     "prepare": "./utils/scripts/prepare"
   },
   "lint-staged": {
-    "*.js": "eslint"
+    "*.js": [
+      "eslint",
+      "prettier --write"
+    ]
   },
   "commitlint": {
     "extends": [
